@@ -1,0 +1,41 @@
+"""
+帮助信息列表
+"""
+type HelpList {
+  "总数"
+  total: Int!
+  "帮助信息列表"
+  helps: [Help!]!
+}
+
+"""
+帮助信息
+"""
+type Help {
+  "帮助id"
+  id: Int!
+  "序号"
+  index: Int!
+  "问题"
+  question: String!
+  "最后修改时间"
+  updatedTime: Float!
+}
+
+"""
+帮助详情信息
+"""
+type HelpDetail {
+  "帮助id"
+  id: Int!
+  "序号"
+  index: Int!
+  "问题"
+  question: String!
+  "答案"
+  answer: String!
+  "最后修改时间"
+  updatedTime: Float!
+  "创建时间"
+  createdTime: Float!
+}

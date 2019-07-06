@@ -1,0 +1,15 @@
+"""
+评论订单信息
+"""
+type CommentOrder {
+  "订单id"
+  id: Int!
+  "酒店信息"
+  hotel: Hotel!
+  "开始时间"
+  startTime: Float!
+  "结束时间"
+  endTime: Float!
+  "房型"
+  roomType: RoomType!
+}

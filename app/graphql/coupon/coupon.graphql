@@ -1,0 +1,49 @@
+"""
+优惠券库存
+"""
+type CouponStock {
+  "优惠券id"
+  id: Int!
+  "库存"
+  stock: Int!
+}
+
+"""
+酒店优惠券
+"""
+type Coupon {
+  "优惠券id"
+  id: Int!
+  "酒店id"
+  hotel: Hotel
+  "房型"
+  roomType: RoomType
+  "会员等级"
+  memberLevel: MemberLevel
+  "类型"
+  type: Int!
+  "名称"
+  name: String!
+  "优惠条件"
+  condition: Int!
+  "折扣"
+  discount: Int!
+  "使用区间"
+  period: [Int!]!
+  "开始时间"
+  startTime: Float!
+  "截止时间"
+  endTime: Float!
+  "可领取总数量"
+  quantity: Int!
+  "库存"
+  stock: Int!
+  "总计"
+  total: Int!
+  "发放时间"
+  releaseTime: Float!
+  "终止发放时间"
+  outTime: Float!
+  "创建时间"
+  createdTime: Float!
+}

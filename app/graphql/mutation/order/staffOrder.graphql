@@ -1,0 +1,20 @@
+type Mutation {
+  """
+  确认订单=>成功与否（酒店员工（管理员，后台））
+  """
+  confirmOrder (
+    "id"
+    id: Int!
+    "房间id数组"
+    roomIds: [Int!]!
+  ): Boolean!
+  """
+  拒绝订单=>成功与否（酒店员工（管理员，后台））
+  """
+  rejectOrder (
+    "id"
+    id: Int!
+    "拒绝理由"
+    reason: String!
+  ): Boolean!
+}

@@ -1,0 +1,7 @@
+"""
+事务
+"""
+type Affair {
+  "id"
+  id: Int!
+}

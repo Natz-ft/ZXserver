@@ -1,0 +1,39 @@
+type Mutation {
+  """
+  新建消费品=>消费品详情（酒店员工）
+  """
+  merchandise (
+    "酒店id"
+    hotelId: Int!
+    "名称"
+    name: String!
+    "单位"
+    unit: String!
+    "价格"
+    price: Int!
+    "封面"
+    cover: String!
+  ): Merchandise!
+  """
+  消费品更新=>成功与否（酒店员工）
+  """
+  updateMerchandise (
+    "消费品id"
+    id: Int!
+    "名称"
+    name: String
+    "单位"
+    unit: String
+    "价格"
+    price: Int
+    "封面"
+    cover: String
+  ): Boolean!
+  """
+  消费品删除=>成功与否（酒店员工）
+  """
+  deleteMerchandise (
+    "消费品id"
+    id: Int!
+  ): Boolean!
+}

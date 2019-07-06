@@ -1,0 +1,38 @@
+type Mutation {
+  """
+  新增优惠券=>优惠券对象（酒店员工（管理员，后台））
+  """
+  addCoupon (
+    "酒店id"
+    hotelId: Int!
+    "房型id"
+    roomTypeId: Int!
+    "会员等级id"
+    memberLevelId: Int!
+    "名字"
+    name: String!
+    "条件"
+    condition: Int!
+    "折扣"
+    discount: Int!
+    "时间段"
+    period: [Int!]!
+    "开始使用时间"
+    startTime: Float!
+    "截止使用时间"
+    endTime: Float!
+    "发放总数"
+    total: Int!
+    "发放时间"
+    releaseTime: Float!
+    "终止发放时间"
+    outTime: Float!
+  ): Coupon!
+  """
+  删除优惠券=>成功与否（酒店员工（管理员，后台））
+  """
+  deleteCoupon (
+    "优惠券id"
+    id: Int!
+  ): Boolean!
+}

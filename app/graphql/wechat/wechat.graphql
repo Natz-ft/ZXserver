@@ -1,0 +1,39 @@
+"""
+微信敏感数据
+"""
+input CryptoData {
+  "临时登录凭证"
+  code: String!
+  "加密数据"
+  encryptedData: String!
+  "加密算法初始向量"
+  iv: String!
+}
+
+"""
+微信用户信息
+"""
+input UserInfo {
+  "昵称"
+  nickName: String!
+  "头像"
+  avatarUrl: String!
+  "性别"
+  gender: Int!
+}
+
+"""
+统一下单返回数据
+"""
+type UnifiedOrderData {
+  "时间戳"
+  timeStamp: String!
+  "随机字符串"
+  nonceStr: String!
+  "数据包"
+  package: String!
+  "签名方式"
+  signType: String!
+  "签名"
+  paySign: String!
+}

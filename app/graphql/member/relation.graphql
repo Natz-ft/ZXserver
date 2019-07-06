@@ -1,0 +1,17 @@
+"""
+评论会员信息
+"""
+type CommentMember {
+  "会员id"
+  id: Int!
+  "等级"
+  level: MemberLevel!
+  "昵称"
+  nickname: String!
+  "头像"
+  avatar: String!
+  "状态"
+  status: Int!
+  "创建时间"
+  createdTime: Float!
+}

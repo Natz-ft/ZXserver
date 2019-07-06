@@ -1,0 +1,9 @@
+type Mutation {
+  """
+  发送短信=>重发时间间隔
+  """
+  sendSms (
+    "手机号"
+    phone: String!
+  ): Int!
+}

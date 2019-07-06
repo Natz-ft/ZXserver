@@ -1,0 +1,35 @@
+"""
+审核记录
+"""
+type Audit {
+  "id"
+  id: Int!
+  "类型"
+  auditTypeId: Int!
+  "审核员工id"
+  staffId: Int
+  "表id"
+  tableId: Int!
+  "名称"
+  name: String!
+  "修改内容"
+  modified: String!
+  "审核状态"
+  status: Int!
+  "审核建议"
+  suggestion: String
+  "审核时间"
+  auditedTime: Float
+  "申请时间"
+  createdTime: Float!
+}
+
+"""
+审核列表
+"""
+type AuditList {
+  "总数"
+  total: Int!
+  "订单列表"
+  audits: [Audit!]!
+}

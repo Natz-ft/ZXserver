@@ -1,0 +1,61 @@
+type Query {
+  """
+  营业执照审核历史=>审核历史（酒店员工（管理员、后台））
+  """
+  licenseAudit (
+    "酒店id"
+    hotelId: Int!
+  ): Audit
+  """
+  基础信息审核历史=>审核历史（酒店员工（管理员、后台））
+  """
+  baseHotelInfoAudit (
+    "酒店id"
+    hotelId: Int!
+  ): Audit
+  """
+  高级信息审核历史=>审核历史（酒店员工（管理员、后台））
+  """
+  higherHotelInfoAudit (
+    "酒店id"
+    hotelId: Int!
+  ): Audit
+  """
+  房型信息审核历史=>审核历史（酒店员工（管理员、后台））
+  """
+  roomTypeAudit (
+    "房型id"
+    roomTypeId: Int!
+  ): Audit
+  """
+  评论审核历史=>审核历史（会员）
+  """
+  commentAudit (
+    "评论id"
+    commentId: Int!
+  ): Audit
+  """
+  消费品审核历史=>审核历史（酒店员工（管理员、后台））
+  """
+  merchandiseAudit (
+    "消费品id"
+    merchandiseId: Int!
+  ): Audit
+  """
+  酒店申请审核列表=>审核列表（系统员工）
+  """
+  requestAudits (
+    "审核类型"
+    type: Int!
+    "审核状态"
+    status: Int!
+    "页码"
+    page: Int!
+    "单页个数"
+    size: Int!
+  ): AuditList!
+  """
+  待办数量=>数量（系统员工）
+  """
+  upcomingAuditCount: [Int!]!
+}

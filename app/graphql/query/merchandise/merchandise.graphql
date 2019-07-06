@@ -1,0 +1,16 @@
+type Query {
+  """
+  消费品详情=>消费品信息（酒店员工）
+  """
+  merchandise (
+    "消费品id"
+    id: Int!
+  ): Merchandise!
+  """
+  获取酒店消费品=>酒店消费品（酒店员工）
+  """
+  merchandises (
+    "酒店id"
+    hotelId: Int!
+  ): [Merchandise!]!
+}

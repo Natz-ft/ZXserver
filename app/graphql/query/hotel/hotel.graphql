@@ -1,0 +1,47 @@
+type Query {
+  """
+  检索酒店列表=>酒店列表（会员，游客）
+  """
+  hotels (
+    "入住时间"
+    startTime: Float!
+    "离店时间"
+    endTime: Float!
+    "经度"
+    longitude: Float!
+    "纬度"
+    latitude: Float!
+    "页码"
+    page: Int!
+    "单页个数"
+    size: Int!
+    "排序，例：[[ 'month', 'asc' ], [ 'isWeekend', 'asc' ]]，可为空"
+    orders: [[String!]!]
+  ): HotelList!
+  """
+  获取酒店详情=>酒店信息（会员，游客）
+  """
+  hotelDetail (
+    "酒店id"
+    hotelId: Int!
+    "入住时间"
+    startTime: Float!
+    "离店时间"
+    endTime: Float!
+    "经度"
+    longitude: Float!
+    "纬度"
+    latitude: Float!
+  ): HotelDetail!
+  """
+  获取酒店房型=>酒店房型（会员，游客）
+  """
+  hotelRoomTypes (
+    "酒店id"
+    hotelId: Int!
+    "入住时间"
+    startTime: Float!
+    "离店时间"
+    endTime: Float!
+  ): HotelRoomType!
+}

@@ -1,0 +1,3114 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Query {
+  # 营业执照审核历史=>审核历史（酒店员工（管理员、后台））
+  """
+  营业执照审核历史=>审核历史（酒店员工（管理员、后台））
+  """
+  licenseAudit("酒店id"
+  hotelId: Int!): Audit
+  # 基础信息审核历史=>审核历史（酒店员工（管理员、后台））
+  """
+  基础信息审核历史=>审核历史（酒店员工（管理员、后台））
+  """
+  baseHotelInfoAudit("酒店id"
+  hotelId: Int!): Audit
+  # 高级信息审核历史=>审核历史（酒店员工（管理员、后台））
+  """
+  高级信息审核历史=>审核历史（酒店员工（管理员、后台））
+  """
+  higherHotelInfoAudit("酒店id"
+  hotelId: Int!): Audit
+  # 房型信息审核历史=>审核历史（酒店员工（管理员、后台））
+  """
+  房型信息审核历史=>审核历史（酒店员工（管理员、后台））
+  """
+  roomTypeAudit("房型id"
+  roomTypeId: Int!): Audit
+  # 评论审核历史=>审核历史（会员）
+  """
+  评论审核历史=>审核历史（会员）
+  """
+  commentAudit("评论id"
+  commentId: Int!): Audit
+  # 消费品审核历史=>审核历史（酒店员工（管理员、后台））
+  """
+  消费品审核历史=>审核历史（酒店员工（管理员、后台））
+  """
+  merchandiseAudit("消费品id"
+  merchandiseId: Int!): Audit
+  # 酒店申请审核列表=>审核列表（系统员工）
+  """
+  酒店申请审核列表=>审核列表（系统员工）
+  """
+  requestAudits("审核类型"
+  type: Int!, "审核状态"
+  status: Int!, "页码"
+  page: Int!, "单页个数"
+  size: Int!): AuditList!
+  # 待办数量=>数量（系统员工）
+  """
+  待办数量=>数量（系统员工）
+  """
+  upcomingAuditCount: [Int!]!
+  # 单一评论查询=>评论详情（全部）
+  """
+  单一评论查询=>评论详情（全部）
+  """
+  comment("评论id"
+  id: Int!): Comment!
+  # 通过订单获取评论=>评论详情（会员）
+  """
+  通过订单获取评论=>评论详情（会员）
+  """
+  commentByOrder("订单id"
+  orderId: Int!): Comment
+  # 获取用户评论列表=>评论列表（会员本人）
+  """
+  获取用户评论列表=>评论列表（会员本人）
+  """
+  memberComments("会员id"
+  memberId: Int!, "页码"
+  page: Int!, "单页个数"
+  size: Int!): CommentList!
+  # 获取酒店评论数=>酒店评论数（全部）
+  """
+  获取酒店评论数=>酒店评论数（全部）
+  """
+  hotelCommentCount("酒店id"
+  hotelId: Int!): CommentCount!
+  # 获取酒店评论列表=>评论列表（会员，游客）
+  """
+  获取酒店评论列表=>评论列表（会员，游客）
+  """
+  hotelComments("酒店id"
+  hotelId: Int!, "页码"
+  page: Int!, "单页个数"
+  size: Int!, "评论类型"
+  type: Int!): CommentList!
+  # 后台获取酒店评论列表=>评论列表（酒店员工）
+  """
+  后台获取酒店评论列表=>评论列表（酒店员工）
+  """
+  hotelAdminComments("酒店id"
+  hotelId: Int!, "页码"
+  page: Int!, "单页个数"
+  size: Int!, "评论类型"
+  type: Int!): AdminCommentList!
+  # 获取优惠券信息=>优惠券信息（会员）
+  """
+  获取优惠券信息=>优惠券信息（会员）
+  """
+  coupon("优惠券id"
+  id: Int!): Coupon!
+  # 获取酒店优惠券数组=>优惠券数组（酒店员工）
+  """
+  获取酒店优惠券数组=>优惠券数组（酒店员工）
+  """
+  hotelCoupons("酒店id"
+  hotelId: Int!): [Coupon!]!
+  # 获取帮助基础列表=>帮助列表（系统员工，会员，游客）
+  """
+  获取帮助基础列表=>帮助列表（系统员工，会员，游客）
+  """
+  helps("页码"
+  page: Int!, "单页个数"
+  size: Int!): HelpList!
+  # 获取帮助详情=>帮助详情（系统员工，会员，游客）
+  """
+  获取帮助详情=>帮助详情（系统员工，会员，游客）
+  """
+  helpDetail("帮助id"
+  id: Int!): HelpDetail!
+  # 检索酒店列表=>酒店列表（会员，游客）
+  """
+  检索酒店列表=>酒店列表（会员，游客）
+  """
+  hotels("入住时间"
+  startTime: Float!, "离店时间"
+  endTime: Float!, "经度"
+  longitude: Float!, "纬度"
+  latitude: Float!, "页码"
+  page: Int!, "单页个数"
+  size: Int!, "排序，例：[[ 'month', 'asc' ], [ 'isWeekend', 'asc' ]]，可为空"
+  orders: [[String!]!]): HotelList!
+  # 获取酒店详情=>酒店信息（会员，游客）
+  """
+  获取酒店详情=>酒店信息（会员，游客）
+  """
+  hotelDetail("酒店id"
+  hotelId: Int!, "入住时间"
+  startTime: Float!, "离店时间"
+  endTime: Float!, "经度"
+  longitude: Float!, "纬度"
+  latitude: Float!): HotelDetail!
+  # 获取酒店房型=>酒店房型（会员，游客）
+  """
+  获取酒店房型=>酒店房型（会员，游客）
+  """
+  hotelRoomTypes("酒店id"
+  hotelId: Int!, "入住时间"
+  startTime: Float!, "离店时间"
+  endTime: Float!): HotelRoomType!
+  # 根据员工获取酒店信息=>酒店信息（酒店员工）
+  """
+  根据员工获取酒店信息=>酒店信息（酒店员工）
+  """
+  hotelByStaffId("员工id"
+  staffId: Int!): StaffHotel!
+  # 获取酒店资质=>酒店营业执照信息（酒店员工，系统员工）
+  """
+  获取酒店资质=>酒店营业执照信息（酒店员工，系统员工）
+  """
+  hotelLicense("酒店id"
+  id: Int!): License
+  # 获取酒店信息=>酒店信息（酒店员工，系统员工）
+  """
+  获取酒店信息=>酒店信息（酒店员工，系统员工）
+  """
+  staffHotel("酒店id"
+  id: Int!): StaffHotel!
+  # 获取酒店基础信息（酒店员工）
+  """
+  获取酒店基础信息（酒店员工）
+  """
+  baseHotelInfo("酒店id"
+  id: Int!): BaseHotelInfo!
+  # 获取酒店高级信息（酒店员工）
+  """
+  获取酒店高级信息（酒店员工）
+  """
+  higherHotelInfo("酒店id"
+  id: Int!): HigherHotelInfo!
+  # 查询用户订单列表=>订单列表（会员）
+  """
+  查询用户订单列表=>订单列表（会员）
+  """
+  memberOrders("会员id"
+  id: Int!, "订单状态"
+  statuses: [Int!]!, "页码"
+  page: Int!, "单页个数"
+  size: Int!): OrderList!
+  # 查询用户相关酒店列表=>酒店列表（会员本人）
+  """
+  查询用户相关酒店列表=>酒店列表（会员本人）
+  """
+  memberHotels("会员id"
+  id: Int!, "经度"
+  longitude: Float!, "纬度"
+  latitude: Float!, "页码"
+  page: Int!, "单页个数"
+  size: Int!, "请求类型"
+  type: Int!): MemberHotelList!
+  # 获取会员未评价订单=>订单列表（会员（订单人））
+  """
+  获取会员未评价订单=>订单列表（会员（订单人））
+  """
+  memberNotCommentOrders("会员id"
+  id: Int!, "页码"
+  page: Int!, "单页个数"
+  size: Int!): OrderList!
+  # 获取会员信息=>会员信息（会员本人）
+  """
+  获取会员信息=>会员信息（会员本人）
+  """
+  member("会员id"
+  id: Int!): Member!
+  # 查询订单房间权限人=>权限人会员id
+  """
+  查询订单房间权限人=>权限人会员id
+  """
+  authMember("订单房间id"
+  orderRoomId: Int!): Int!
+  # 消费品详情=>消费品信息（酒店员工）
+  """
+  消费品详情=>消费品信息（酒店员工）
+  """
+  merchandise("消费品id"
+  id: Int!): Merchandise!
+  # 获取酒店消费品=>酒店消费品（酒店员工）
+  """
+  获取酒店消费品=>酒店消费品（酒店员工）
+  """
+  merchandises("酒店id"
+  hotelId: Int!): [Merchandise!]!
+  # 查询订单=>订单详情（会员本人）
+  """
+  查询订单=>订单详情（会员本人）
+  """
+  order("订单id"
+  id: Int!): Order
+  # 查询子订单列表=>子订单列表（会员）
+  """
+  查询子订单列表=>子订单列表（会员）
+  """
+  orderChildren("id"
+  id: Int!): [Order!]!
+  # 获取订单列表=>订单列表（测试）
+  """
+  获取订单列表=>订单列表（测试）
+  """
+  orders: [Order!]!
+  # 查询订单状态=>订单状态
+  """
+  查询订单状态=>订单状态
+  """
+  orderStatus("id"
+  id: Int!): Int!
+  # 酒店订单
+  """
+  酒店订单
+  """
+  hotelOrders("酒店id"
+  hotelId: Int!, "订单状态"
+  status: Int!, "页码"
+  page: Int!, "单页个数"
+  size: Int!): OrderList!
+  # 获取时间段内某房型空闲房间=>空闲房间数组（会员）
+  """
+  获取时间段内某房型空闲房间=>空闲房间数组（会员）
+  """
+  freeRooms("房型id"
+  roomTypeId: Int!, "开始时间"
+  startTime: Float!, "结束时间"
+  endTime: Float!): [Int!]!
+  # 获取拥有房间=>拥有房间数组
+  """
+  获取拥有房间=>拥有房间数组
+  """
+  ownRooms("订单id"
+  orderId: Int!): [OwnRoom!]!
+  # 获取酒店房间=>酒店房间（酒店员工）
+  """
+  获取酒店房间=>酒店房间（酒店员工）
+  """
+  roomsByHotelId("酒店id"
+  hotelId: Int!, "状态"
+  statuses: [Int!]!): [StaffRoom!]!
+  # 获取酒店房型=>酒店房型（酒店员工）
+  """
+  获取酒店房型=>酒店房型（酒店员工）
+  """
+  roomTypesByHotelId("酒店id"
+  hotelId: Int!): [StaffRoomType!]!
+  # 获取可换房=>可换房房间（酒店员工）
+  """
+  获取可换房=>可换房房间（酒店员工）
+  """
+  changeableRooms("房间id"
+  id: Int!): [StaffRoomBase!]!
+  # 获取酒店房间基础=>酒店房间基础（酒店员工）
+  """
+  获取酒店房间基础=>酒店房间基础（酒店员工）
+  """
+  roomBasesByHotelId("酒店id"
+  hotelId: Int!): [StaffRoomBase!]!
+  # 获取打扫的订单房间=>订单房间详情（酒店员工（打扫））
+  """
+  获取打扫的订单房间=>订单房间详情（酒店员工（打扫））
+  """
+  sweepOrderRoom("房间id"
+  id: Int!): SweepOrderRoom
+  # 获取订单可选房间=>房间列表
+  """
+  获取订单可选房间=>房间列表
+  """
+  selectableRooms("订单id"
+  orderId: Int!): [StaffRoomBase!]!
+  # 查询用户订单申请入住=>申请入住（会员）
+  """
+  查询用户订单申请入住=>申请入住（会员）
+  """
+  requestCheckInInfo("订单id"
+  orderId: Int!, "会员id"
+  memberId: Int!): RequestCheckIn
+  # 查询会员是否已申请授权=>申请授权（会员）
+  """
+  查询会员是否已申请授权=>申请授权（会员）
+  """
+  requestAuthorityInfo("订单房间id"
+  orderRoomId: Int!, "openId（暂仅支持微信）"
+  openId: String!): RequestAuthority
+  # 查询订单申请入住列表=>申请入住列表（会员）
+  """
+  查询订单申请入住列表=>申请入住列表（会员）
+  """
+  requestCheckIns("订单id"
+  orderId: Int!): [RequestCheckIn!]!
+  # 查询订单房间申请权限列表=>申请权限列表（会员）
+  """
+  查询订单房间申请权限列表=>申请权限列表（会员）
+  """
+  requestAuthorities("订单房间id"
+  orderRoomId: Int!): [RequestAuthority!]!
+  # 查询原始会员某房间是否是权限人=>是否（会员）
+  """
+  查询原始会员某房间是否是权限人=>是否（会员）
+  """
+  isAuthorMan("原始会员id"
+  originMemberId: Int!, "订单房间id"
+  orderRoomId: Int!): Boolean!
+  roomTypeStatisc(hotelId: Int!): [roomTypeStatisc!]!
+  orderStatisc(hotelId: Int!, startTime: Float!, endTime: Float!): [orderStatisc!]!
+  # 查询用户=>用户信息
+  """
+  查询用户=>用户信息
+  """
+  user("用户id"
+  id: Int!): User!
+  # 获取用户列表=>用户列表
+  """
+  获取用户列表=>用户列表
+  """
+  users: [User!]!
+  # 获取openId=>openId（会员，游客）
+  """
+  获取openId=>openId（会员，游客）
+  """
+  openId("微信code"
+  code: String!): String!
+}
+
+type Mutation {
+  # 发起事务=>成功与否（会员）
+  """
+  发起事务=>成功与否（会员）
+  """
+  startAffair("订单房间id"
+  orderRoomId: Int!, "类型"
+  type: Int!, "期望处理时间"
+  expectTime: Float!, "内容"
+  content: String!): Boolean!
+  # 审核（系统员工）
+  """
+  审核（系统员工）
+  """
+  audit("id"
+  id: Int!, "状态"
+  status: Int!, "审核建议"
+  suggestion: String!): Boolean!
+  # 会员评论=>评论id（会员）
+  """
+  会员评论=>评论id（会员）
+  """
+  comment("用户id"
+  memberId: Int!, "订单id"
+  orderId: Int!, "服务评分"
+  serviceRate: Int!, "卫生评分"
+  hygieneRate: Int!, "位置评分"
+  positionRate: Int!, "设备评分"
+  deviceRate: Int!, "评价内容"
+  content: String!): Int!
+  # 酒店回复=>回复id（酒店员工（管理员，后台））
+  """
+  酒店回复=>回复id（酒店员工（管理员，后台））
+  """
+  reply("评论id"
+  commentId: Int!, "内容"
+  content: String!): Int!
+  # 领取优惠券=>优惠券库存（会员）
+  """
+  领取优惠券=>优惠券库存（会员）
+  """
+  collectCoupon("优惠券id"
+  id: Int!, "会员id"
+  memberId: Int!): CouponStock!
+  # 新增优惠券=>优惠券对象（酒店员工（管理员，后台））
+  """
+  新增优惠券=>优惠券对象（酒店员工（管理员，后台））
+  """
+  addCoupon("酒店id"
+  hotelId: Int!, "房型id"
+  roomTypeId: Int!, "会员等级id"
+  memberLevelId: Int!, "名字"
+  name: String!, "条件"
+  condition: Int!, "折扣"
+  discount: Int!, "时间段"
+  period: [Int!]!, "开始使用时间"
+  startTime: Float!, "截止使用时间"
+  endTime: Float!, "发放总数"
+  total: Int!, "发放时间"
+  releaseTime: Float!, "终止发放时间"
+  outTime: Float!): Coupon!
+  # 删除优惠券=>成功与否（酒店员工（管理员，后台））
+  """
+  删除优惠券=>成功与否（酒店员工（管理员，后台））
+  """
+  deleteCoupon("优惠券id"
+  id: Int!): Boolean!
+  # 单文件上传=>文件（仅会员可上传文件）
+  """
+  单文件上传=>文件（仅会员可上传文件）
+  """
+  singleUpload("文件"
+  file: Upload!): File!
+  # 新增帮助信息（系统员工）
+  """
+  新增帮助信息（系统员工）
+  """
+  addHelp("帮助位置"
+  index: Int!, "问"
+  question: String!, "答"
+  answer: String!): HelpDetail!
+  # 修改帮助信息（系统员工）
+  """
+  修改帮助信息（系统员工）
+  """
+  updateHelp("id"
+  id: Int!, "帮助位置"
+  index: Int!, "问"
+  question: String!, "答"
+  answer: String!): HelpDetail!
+  # 浏览酒店=>浏览时间戳（会员，游客）
+  """
+  浏览酒店=>浏览时间戳（会员，游客）
+  """
+  viewHotel("酒店id"
+  id: Int!, "会员id（为空为游客）"
+  memberId: Int): Float!
+  # 提交新的营业执照=>成功与否（酒店员工）
+  """
+  提交新的营业执照=>成功与否（酒店员工）
+  """
+  submitLicense("酒店id"
+  id: Int!, "注册资本"
+  capital: String!, "社会信用代码"
+  code: String!, "单位名称"
+  name: String!, "法人"
+  person: String!, "注册号"
+  number: String!, "组成形式"
+  form: String!, "成立日期"
+  establishment: String!, "地址"
+  address: String!, "类型"
+  type: String!, "有效期"
+  validity: String!, "图片链接"
+  image: String!): Boolean!
+  # 提交新的酒店基础信息=>成功与否（酒店员工）
+  """
+  提交新的酒店基础信息=>成功与否（酒店员工）
+  """
+  submitBaseHotelInfo("基础信息"
+  baseHotelInfo: BaseHotelInfoInput!): Boolean!
+  # 提交新的酒店高级信息=>成功与否（酒店员工）
+  """
+  提交新的酒店高级信息=>成功与否（酒店员工）
+  """
+  submitHigherHotelInfo("高级信息"
+  higherHotelInfo: HigherHotelInfoInput!): Boolean!
+  # 手机号登录=>会员信息（会员，游客）
+  """
+  手机号登录=>会员信息（会员，游客）
+  """
+  phoneLogin("手机号"
+  phone: String!, "验证码"
+  code: String!, "会员id"
+  memberId: Int, "来源"
+  source: Int!, "授权码"
+  authCode: String): Member!
+  # 绑定手机号=>成功与否（会员）
+  """
+  绑定手机号=>成功与否（会员）
+  """
+  bindPhone("会员id"
+  id: Int!, "手机号"
+  phone: String!, "验证码"
+  code: String!): Boolean!
+  # 更改昵称=>成功与否（会员）
+  """
+  更改昵称=>成功与否（会员）
+  """
+  nickname("会员id"
+  id: Int!, "昵称"
+  nickname: String!): Boolean!
+  # 增加入住人（简易）（会员）
+  """
+  增加入住人（简易）（会员）
+  """
+  addCheckInMan("会员id"
+  id: Int!, "姓名"
+  name: String!, "身份证号"
+  idCard: String!): CheckInMan!
+  # 删除入住人（会员）
+  """
+  删除入住人（会员）
+  """
+  deleteCheckInMan("会员id"
+  id: Int!, "入住人id"
+  checkInManId: Int!): Boolean!
+  # 收藏酒店=>用户收藏id（会员）
+  """
+  收藏酒店=>用户收藏id（会员）
+  """
+  collectHotel("会员id"
+  id: Int!, "酒店id"
+  hotelId: Int!): Boolean!
+  # 取消收藏酒店=>成功与否（会员）
+  """
+  取消收藏酒店=>成功与否（会员）
+  """
+  cancelCollectHotel("会员id"
+  id: Int!, "用户收藏id"
+  memberCollectionIds: [Int!]!): Boolean!
+  # 清空浏览记录=>成功与否（会员）
+  """
+  清空浏览记录=>成功与否（会员）
+  """
+  clearViews("会员id"
+  id: Int!): Boolean!
+  # 评论点赞=>点赞id（会员）
+  """
+  评论点赞=>点赞id（会员）
+  """
+  likeComment("评论id"
+  commentId: Int!): Int!
+  # 新建消费品=>消费品详情（酒店员工）
+  """
+  新建消费品=>消费品详情（酒店员工）
+  """
+  merchandise("酒店id"
+  hotelId: Int!, "名称"
+  name: String!, "单位"
+  unit: String!, "价格"
+  price: Int!, "封面"
+  cover: String!): Merchandise!
+  # 消费品更新=>成功与否（酒店员工）
+  """
+  消费品更新=>成功与否（酒店员工）
+  """
+  updateMerchandise("消费品id"
+  id: Int!, "名称"
+  name: String, "单位"
+  unit: String, "价格"
+  price: Int, "封面"
+  cover: String): Boolean!
+  # 消费品删除=>成功与否（酒店员工）
+  """
+  消费品删除=>成功与否（酒店员工）
+  """
+  deleteMerchandise("消费品id"
+  id: Int!): Boolean!
+  # 下单接口=>订单信息（会员）
+  """
+  下单接口=>订单信息（会员）
+  """
+  order("会员来源"
+  memberSource: Int!, "预定人"
+  orderMemberId: Int!, "联系人姓名"
+  contact: String!, "会员优惠券id"
+  memberCouponId: Int, "房型id"
+  roomTypeId: Int!, "房间数"
+  roomCount: Int!, "入住时间"
+  startTime: Float!, "离店时间"
+  endTime: Float!, "酒店最晚取消时间"
+  hotelCancelTime: String!, "订单价格数组"
+  orderPrices: [OrderPriceInput!]!, "押金"
+  deposit: Int!, "总价（减去优惠券）"
+  totalMoney: Int!, "总价"
+  realTotalMoney: Int!, "联系人电话"
+  phone: String!): Order!
+  # 取消订单=>成功与否（会员（订单人，权限人））
+  """
+  取消订单=>成功与否（会员（订单人，权限人））
+  """
+  cancelOrder("订单id"
+  id: Int!, "会员id"
+  memberId: Int!): Boolean!
+  # 退房=>订单（会员（订单人，权限人））
+  """
+  退房=>订单（会员（订单人，权限人））
+  """
+  checkout("订单房间id"
+  orderRoomIds: [Int!]!): Order!
+  # 续房=>订单（会员（订单人，权限人））
+  """
+  续房=>订单（会员（订单人，权限人））
+  """
+  stay("订单id"
+  id: Int!, "续订人"
+  orderMemberId: Int!, "会员优惠券id"
+  memberCouponId: Int, "房间数"
+  roomCount: Int!, "离店时间"
+  endTime: Float!, "订单价格数组"
+  orderPrices: [OrderPriceInput!]!, "总价（减去优惠券）"
+  totalMoney: Int!, "总价"
+  realTotalMoney: Int!, "继承房间数组"
+  inheritRooms: [Int!]!, "预填入住人"
+  rooms: [StayCheckInMenRoom!]!): Order!
+  # 确定入住人=>成功与否（会员（订单人，权限人））
+  """
+  确定入住人=>成功与否（会员（订单人，权限人））
+  """
+  confirmCheckInMen("订单id"
+  id: Int!, "预填入住人"
+  rooms: [CheckInMenRoom!]!): Boolean!
+  # 会员开锁=>成功与否（会员）
+  """
+  会员开锁=>成功与否（会员）
+  """
+  memberOpenLock("订单房间id"
+  orderRoomId: Int!): Boolean!
+  # 确认订单=>成功与否（酒店员工（管理员，后台））
+  """
+  确认订单=>成功与否（酒店员工（管理员，后台））
+  """
+  confirmOrder("id"
+  id: Int!, "房间id数组"
+  roomIds: [Int!]!): Boolean!
+  # 拒绝订单=>成功与否（酒店员工（管理员，后台））
+  """
+  拒绝订单=>成功与否（酒店员工（管理员，后台））
+  """
+  rejectOrder("id"
+  id: Int!, "拒绝理由"
+  reason: String!): Boolean!
+  # 开锁=>是否成功（酒店员工）
+  """
+  开锁=>是否成功（酒店员工）
+  """
+  openLock("房间id"
+  id: Int!): Boolean!
+  # 更改房间房态=>成功与否（酒店员工）
+  """
+  更改房间房态=>成功与否（酒店员工）
+  """
+  changeRoomStatus("房间id"
+  id: Int!, "状态id"
+  statusId: Int!): Boolean!
+  # 更改房型房态=>成功与否（酒店员工）
+  """
+  更改房型房态=>成功与否（酒店员工）
+  """
+  changeRoomTypeStatus("房型id"
+  roomTypeId: Int!, "状态"
+  status: Int!): Boolean!
+  # 更换房间=>成功与否（酒店员工）
+  """
+  更换房间=>成功与否（酒店员工）
+  """
+  changeRoom("旧房间id"
+  oldId: Int!, "新房间id"
+  newId: Int!): Boolean!
+  # 新增房型=>房型信息（酒店员工）
+  """
+  新增房型=>房型信息（酒店员工）
+  """
+  addRoomType("酒店id"
+  hotelId: Int!, "名称"
+  name: String!, "容量"
+  capacity: Int!, "介绍"
+  introduction: String!, "状态"
+  status: Int!, "是否可为钟点房"
+  hourlyRoom: Int!, "钟点房价格"
+  hourlyPrice: Int!, "钟点房超出半小时价格"
+  hourlyOutOfPrice: Int!, "工作日房价"
+  workPrice: [MonthPriceInput!]!, "周末房价"
+  weekendPrice: [MonthPriceInput!]!, "特价"
+  specialTime: [SpecialPriceInput!]!, "标签"
+  tags: [String!]!, "是否独立卫生间"
+  toilet: Int!, "是否洗漱用品"
+  toiletries: Int!, "是否淋浴"
+  shower: Int!, "是否24小时热水"
+  hotWater: Int!, "是否吹风机"
+  blower: Int!, "上网方式"
+  internet: [Int!]!, "是否空气净化器"
+  airCleaner: Int!): StaffRoomType!
+  # 删除房型=>是否删除成功（酒店员工）
+  """
+  删除房型=>是否删除成功（酒店员工）
+  """
+  removeRoomType("房型id"
+  roomTypeId: Int!): Boolean!
+  # 提交房型信息审核=>是否提交成功（酒店员工）
+  """
+  提交房型信息审核=>是否提交成功（酒店员工）
+  """
+  submitRoomType("id"
+  id: Int!, "名称"
+  name: String!, "介绍"
+  introduction: String!, "钟点房价格"
+  hourlyPrice: Int!, "钟点房超出半小时价格"
+  hourlyOutOfPrice: Int!, "工作日房价"
+  workPrice: [MonthPriceInput!]!, "周末房价"
+  weekendPrice: [MonthPriceInput!]!, "特价"
+  specialTime: [SpecialPriceInput!]!, "标签"
+  tags: [String!]!, "封面图片"
+  cover: String!, "图片集"
+  pictures: [String!]!): Boolean!
+  # 房型信息更新=>是否更新成功（酒店员工）
+  """
+  房型信息更新=>是否更新成功（酒店员工）
+  """
+  updateRoomType("id"
+  id: Int!, "状态"
+  status: Int!, "是否可为钟点房"
+  hourlyRoom: Int!, "是否独立卫生间"
+  toilet: Int!, "是否洗漱用品"
+  toiletries: Int!, "是否淋浴"
+  shower: Int!, "是否24小时热水"
+  hotWater: Int!, "是否吹风机"
+  blower: Int!, "上网方式"
+  internet: [Int!]!, "是否空气净化器"
+  airCleaner: Int!): Boolean!
+  # 新增房间=>房间id（酒店员工）
+  """
+  新增房间=>房间id（酒店员工）
+  """
+  addRoom("房型id"
+  roomTypeId: Int!, "建筑"
+  building: String!, "楼层"
+  floor: Int!, "房间号"
+  door: String!, "智能门锁ip"
+  lockIP: String!, "是否无人房"
+  isNoMan: Int!, "是否可为钟点房"
+  isHourly: Int!): Int!
+  # 更新房间=>房间信息（酒店员工）
+  """
+  更新房间=>房间信息（酒店员工）
+  """
+  updateRoom("房间id"
+  id: Int!, "房型id"
+  roomTypeId: Int!, "房间状态"
+  status: Int!, "建筑"
+  building: String!, "楼层"
+  floor: Int!, "房间号"
+  door: String!, "智能门锁ip"
+  lockIP: String!, "是否无人房"
+  isNoMan: Int!, "是否可为钟点房"
+  isHourly: Int!): Int!
+  # 删除房间=>是否删除成功（酒店员工）
+  """
+  删除房间=>是否删除成功（酒店员工）
+  """
+  removeRoom("房间id"
+  id: Int!): Boolean!
+  # 确定消费品=>成功与否（酒店员工）
+  """
+  确定消费品=>成功与否（酒店员工）
+  """
+  confirmConsume("订单房间id"
+  orderRoomId: Int!, "消费品数组"
+  merchandises: [Int!]!, "数量数组"
+  counts: [Int!]!): Boolean!
+  # 申请入住=>成功与否（会员）
+  """
+  申请入住=>成功与否（会员）
+  """
+  requestCheckIn("订单id"
+  orderId: Int!, "发起会员id"
+  originMemberId: Int!, "目标会员id"
+  targetMemberId: Int!, "姓名"
+  name: String!, "身份证号"
+  idCard: String!): Boolean!
+  # 申请权限=>成功与否（会员）
+  """
+  申请权限=>成功与否（会员）
+  """
+  requestAuthority("订单房间id"
+  orderRoomId: Int!, "发起会员id"
+  originMemberId: Int!, "目标会员id"
+  targetMemberId: Int!): Boolean!
+  # 确认分享权限=>成功与否（会员）
+  """
+  确认分享权限=>成功与否（会员）
+  """
+  confirmAuthority("订单房间id"
+  orderRoomId: Int!, "发起会员id"
+  originMemberId: Int!, "目标会员id"
+  targetMemberId: Int!): Boolean!
+  # 发送短信=>重发时间间隔
+  """
+  发送短信=>重发时间间隔
+  """
+  sendSms("手机号"
+  phone: String!): Int!
+  # pc登录=>登录信息（酒店员工，游客）
+  """
+  pc登录=>登录信息（酒店员工，游客）
+  """
+  webLogin("用户名"
+  username: String!, "密码"
+  password: String!, "来源"
+  source: Int!): Staff!
+  # 新增用户=>用户id
+  """
+  新增用户=>用户id
+  """
+  addUser("用户名"
+  name: String!, "年龄"
+  age: Int!): Int
+  # 删除用户=>成功与否
+  """
+  删除用户=>成功与否
+  """
+  removeUser("用户id"
+  id: Int!): Boolean!
+  # 微信登录=>用户信息（会员，游客）
+  """
+  微信登录=>用户信息（会员，游客）
+  """
+  login("敏感数据"
+  cryptoData: CryptoData!, "微信会员信息"
+  userInfo: UserInfo): Member!
+  # 微信绑定=>会员id（会员）
+  """
+  微信绑定=>会员id（会员）
+  """
+  bind("敏感数据"
+  cryptoData: CryptoData!, "会员id"
+  memberId: Int!): Int
+  # 微信统一下单=>统一下单信息（会员，游客）
+  """
+  微信统一下单=>统一下单信息（会员，游客）
+  """
+  unifiedOrder("会员openId"
+  openId: String!, "订单号"
+  orderId: Int!): UnifiedOrderData!
+}
+
+"""
+事务
+"""
+type Affair {
+  # id
+  "id"
+  id: Int!
+}
+
+"""
+审核记录
+"""
+type Audit {
+  # id
+  "id"
+  id: Int!
+  # 类型
+  "类型"
+  auditTypeId: Int!
+  # 审核员工id
+  "审核员工id"
+  staffId: Int
+  # 表id
+  "表id"
+  tableId: Int!
+  # 名称
+  "名称"
+  name: String!
+  # 修改内容
+  "修改内容"
+  modified: String!
+  # 审核状态
+  "审核状态"
+  status: Int!
+  # 审核建议
+  "审核建议"
+  suggestion: String
+  # 审核时间
+  "审核时间"
+  auditedTime: Float
+  # 申请时间
+  "申请时间"
+  createdTime: Float!
+}
+
+"""
+审核列表
+"""
+type AuditList {
+  # 总数
+  "总数"
+  total: Int!
+  # 订单列表
+  "订单列表"
+  audits: [Audit!]!
+}
+
+"""
+评论列表
+"""
+type AdminCommentList {
+  # 总数
+  "总数"
+  total: Int!
+  # 评论列表
+  "评论列表"
+  comments: [AdminComment!]!
+}
+
+"""
+评论
+"""
+type AdminComment {
+  # 评论id
+  "评论id"
+  id: Int!
+  # 订单id
+  "订单id"
+  orderId: Int!
+  # 评分
+  "评分"
+  rate: Int!
+  # 评价
+  "评价"
+  content: String!
+  # 浏览次数
+  "浏览次数"
+  viewCount: Int!
+  # 评论时间
+  "评论时间"
+  createdTime: Float!
+  # 会员
+  "会员"
+  member: PublicMember!
+  # 回复
+  "回复"
+  reply: AdminReply
+}
+
+"""
+评论回复
+"""
+type AdminReply {
+  # 回复id
+  "回复id"
+  id: Int!
+  # 评论id
+  "评论id"
+  commentId: Int!
+  # 员工id
+  "员工id"
+  staff: Staff!
+  # 回复内容
+  "回复内容"
+  content: String!
+  # 最后修改时间
+  "最后修改时间"
+  updatedTime: Float!
+  # 回复时间
+  "回复时间"
+  createdTime: Float!
+}
+
+"""
+评论数
+"""
+type CommentCount {
+  # 总数
+  "总数"
+  total: Int!
+  # 好评
+  "好评"
+  good: Int!
+  # 中评
+  "中评"
+  middle: Int!
+  # 差评
+  "差评"
+  bad: Int!
+}
+
+"""
+评论列表
+"""
+type CommentList {
+  # 总数
+  "总数"
+  total: Int!
+  # 评论列表
+  "评论列表"
+  comments: [Comment!]!
+}
+
+"""
+评论类
+"""
+type Comment {
+  # 评论id
+  "评论id"
+  id: Int!
+  # 评分
+  "评分"
+  rate: Int!
+  # 服务评分
+  "服务评分"
+  serviceRate: Int!
+  # 卫生评分
+  "卫生评分"
+  hygieneRate: Int!
+  # 位置评分
+  "位置评分"
+  positionRate: Int!
+  # 设备评分
+  "设备评分"
+  deviceRate: Int!
+  # 评价
+  "评价"
+  content: String!
+  # 浏览次数
+  "浏览次数"
+  viewCount: Int!
+  # 状态
+  "状态"
+  status: Int!
+  # 评论时间
+  "评论时间"
+  createdTime: Float!
+  # 审核建议
+  "审核建议"
+  suggestion: String
+  # 点赞数
+  "点赞数"
+  likeCount: Int!
+  # 回复
+  "回复"
+  reply: Reply
+  # 会员
+  "会员"
+  member: CommentMember!
+  # 订单信息
+  "订单信息"
+  order: CommentOrder!
+}
+
+"""
+评论回复
+"""
+type Reply {
+  # 回复id
+  "回复id"
+  id: Int!
+  # 评论id
+  "评论id"
+  commentId: Int!
+  # 回复内容
+  "回复内容"
+  content: String!
+  # 最后修改时间
+  "最后修改时间"
+  updatedTime: Float!
+  # 回复时间
+  "回复时间"
+  createdTime: Float!
+}
+
+scalar Upload
+
+"""
+优惠券库存
+"""
+type CouponStock {
+  # 优惠券id
+  "优惠券id"
+  id: Int!
+  # 库存
+  "库存"
+  stock: Int!
+}
+
+"""
+酒店优惠券
+"""
+type Coupon {
+  # 优惠券id
+  "优惠券id"
+  id: Int!
+  # 酒店id
+  "酒店id"
+  hotel: Hotel
+  # 房型
+  "房型"
+  roomType: RoomType
+  # 会员等级
+  "会员等级"
+  memberLevel: MemberLevel
+  # 类型
+  "类型"
+  type: Int!
+  # 名称
+  "名称"
+  name: String!
+  # 优惠条件
+  "优惠条件"
+  condition: Int!
+  # 折扣
+  "折扣"
+  discount: Int!
+  # 使用区间
+  "使用区间"
+  period: [Int!]!
+  # 开始时间
+  "开始时间"
+  startTime: Float!
+  # 截止时间
+  "截止时间"
+  endTime: Float!
+  # 可领取总数量
+  "可领取总数量"
+  quantity: Int!
+  # 库存
+  "库存"
+  stock: Int!
+  # 总计
+  "总计"
+  total: Int!
+  # 发放时间
+  "发放时间"
+  releaseTime: Float!
+  # 终止发放时间
+  "终止发放时间"
+  outTime: Float!
+  # 创建时间
+  "创建时间"
+  createdTime: Float!
+}
+
+"""
+文件
+"""
+type File {
+  # 文件id
+  "文件id"
+  id: ID!
+  # 路径
+  "路径"
+  path: String!
+  # 文件名
+  "文件名"
+  filename: String!
+  # 类型
+  "类型"
+  mimetype: String!
+}
+
+"""
+帮助信息列表
+"""
+type HelpList {
+  # 总数
+  "总数"
+  total: Int!
+  # 帮助信息列表
+  "帮助信息列表"
+  helps: [Help!]!
+}
+
+"""
+帮助信息
+"""
+type Help {
+  # 帮助id
+  "帮助id"
+  id: Int!
+  # 序号
+  "序号"
+  index: Int!
+  # 问题
+  "问题"
+  question: String!
+  # 最后修改时间
+  "最后修改时间"
+  updatedTime: Float!
+}
+
+"""
+帮助详情信息
+"""
+type HelpDetail {
+  # 帮助id
+  "帮助id"
+  id: Int!
+  # 序号
+  "序号"
+  index: Int!
+  # 问题
+  "问题"
+  question: String!
+  # 答案
+  "答案"
+  answer: String!
+  # 最后修改时间
+  "最后修改时间"
+  updatedTime: Float!
+  # 创建时间
+  "创建时间"
+  createdTime: Float!
+}
+
+"""
+酒店星级
+"""
+type HotelStar {
+  # 酒店星级id
+  "酒店星级id"
+  id: Int!
+  # 等级
+  "等级"
+  level: Int!
+  # 标签
+  "标签"
+  label: String!
+  # 图标
+  "图标"
+  icon: String!
+}
+
+"""
+酒店类型
+"""
+type HotelType {
+  # id
+  "id"
+  id: Int!
+  # 代码
+  "代码"
+  code: String!
+  # 简称
+  "简称"
+  abbreviation: String!
+  # 描述
+  "描述"
+  description: String!
+}
+
+"""
+酒店信息
+"""
+type HotelInfo {
+  # 酒店信息id
+  "酒店信息id"
+  id: Int!
+  # 总评分
+  "总评分"
+  rate: Int!
+  # 服务评分
+  "服务评分"
+  serviceRate: Int!
+  # 卫生评分
+  "卫生评分"
+  hygieneRate: Int!
+  # 位置评分
+  "位置评分"
+  positionRate: Int!
+  # 设备评分
+  "设备评分"
+  deviceRate: Int!
+  # 押金
+  "押金"
+  deposit: Int!
+  # 最早入住时间
+  "最早入住时间"
+  startTime: String!
+  # 最晚入住时间
+  "最晚入住时间"
+  endTime: String!
+  # 最晚离店时间
+  "最晚离店时间"
+  checkoutTime: String!
+  # 最晚取消时间
+  "最晚取消时间"
+  cancelTime: String!
+  # 周末时间
+  "周末时间"
+  weekend: [Int!]!
+  # 钟点房最早入住时间
+  "钟点房最早入住时间"
+  hourlyStartTime: String!
+  # 钟点房最晚入住时间
+  "钟点房最晚入住时间"
+  hourlyEndTime: String!
+}
+
+"""
+酒店标签
+"""
+type HotelLabel {
+  # 名称
+  "名称"
+  name: String!
+  # 类型
+  "类型"
+  type: Int!
+}
+
+"""
+酒店图片
+"""
+type HotelImage {
+  # 酒店图片id
+  "酒店图片id"
+  id: Int!
+  # 链接
+  "链接"
+  url: String!
+  # 描述
+  "描述"
+  description: String!
+}
+
+"""
+酒店电话
+"""
+type HotelLandLine {
+  # id
+  "id"
+  id: Int!
+  # 酒店id
+  "酒店id"
+  hotelId: Int!
+  # 区号
+  "区号"
+  areaCode: String!
+  # 号码
+  "号码"
+  number: String!
+  # 分机号
+  "分机号"
+  extensionNumber: String
+}
+
+"""
+酒店手机号
+"""
+type HotelPhone {
+  # id
+  "id"
+  id: Int!
+  # 酒店id
+  "酒店id"
+  hotelId: Int!
+  # 手机号
+  "手机号"
+  phone: String!
+}
+
+"""
+营业执照
+"""
+type License {
+  # id
+  "id"
+  id: Int!
+  # 酒店id
+  "酒店id"
+  hotelId: Int!
+  # 注册资本
+  "注册资本"
+  capital: String!
+  # 社会信用代码
+  "社会信用代码"
+  code: String!
+  # 单位名称
+  "单位名称"
+  name: String!
+  # 法人
+  "法人"
+  person: String!
+  # 注册号
+  "注册号"
+  number: String!
+  # 组成形式
+  "组成形式"
+  form: String!
+  # 成立日期
+  "成立日期"
+  establishment: String!
+  # 地址
+  "地址"
+  address: String!
+  # 类型
+  "类型"
+  type: String!
+  # 有效期
+  "有效期"
+  validity: String!
+  # 图片链接
+  "图片链接"
+  image: String!
+  # 最近更新时间
+  "最近更新时间"
+  updatedTime: Float!
+  # 创建时间
+  "创建时间"
+  createdTime: Float!
+}
+
+"""
+订单酒店信息
+"""
+type OrderHotel {
+  # 酒店id
+  "酒店id"
+  id: Int!
+  # 酒店信息
+  "酒店信息"
+  info: HotelInfo!
+  # 酒店星级
+  "酒店星级"
+  star: HotelStar!
+  # 名字
+  "名字"
+  name: String!
+  # 子名字
+  "子名字"
+  subName: String!
+  # 省份
+  "省份"
+  province: String!
+  # 城市
+  "城市"
+  city: String!
+  # 地区
+  "地区"
+  district: String!
+  # 街道
+  "街道"
+  street: String!
+  # 详细地址
+  "详细地址"
+  address: String!
+  # 经度
+  "经度"
+  longitude: Float!
+  # 纬度
+  "纬度"
+  latitude: Float!
+  # 介绍
+  "介绍"
+  introduction: String!
+  # 封面图片
+  "封面图片"
+  coverUrl: String!
+  # 是否有智能锁
+  "是否有智能锁"
+  hasSmartLock: Boolean!
+}
+
+"""
+用户相关酒店列表
+"""
+type MemberHotelList {
+  # 总数
+  "总数"
+  total: Int!
+  # 用户相关酒店列表
+  "用户相关酒店列表"
+  hotels: [MemberHotel!]!
+}
+
+"""
+用户相关酒店
+"""
+type MemberHotel {
+  # 相关id
+  "相关id"
+  id: Int!
+  # 酒店信息
+  "酒店信息"
+  hotel: Hotel!
+  # 创建时间
+  "创建时间"
+  createdTime: Float!
+}
+
+"""
+酒店列表
+"""
+type HotelList {
+  # 总数
+  "总数"
+  total: Int!
+  # 酒店列表
+  "酒店列表"
+  hotels: [Hotel!]!
+}
+
+"""
+酒店首页信息
+"""
+type Hotel {
+  # 酒店id
+  "酒店id"
+  id: Int!
+  # 酒店信息
+  "酒店信息"
+  info: HotelInfo!
+  # 酒店星级
+  "酒店星级"
+  star: HotelStar!
+  # 名字
+  "名字"
+  name: String!
+  # 子名字
+  "子名字"
+  subName: String!
+  # 省份
+  "省份"
+  province: String!
+  # 城市
+  "城市"
+  city: String!
+  # 地区
+  "地区"
+  district: String!
+  # 街道
+  "街道"
+  street: String!
+  # 详细地址
+  "详细地址"
+  address: String!
+  # 经度
+  "经度"
+  longitude: Float!
+  # 纬度
+  "纬度"
+  latitude: Float!
+  # 介绍
+  "介绍"
+  introduction: String!
+  # 封面图片
+  "封面图片"
+  coverUrl: String!
+  # 是否有智能锁
+  "是否有智能锁"
+  hasSmartLock: Boolean!
+  # 距离
+  "距离"
+  distance: Int!
+  # 最低价格
+  "最低价格"
+  minPrice: Int!
+  # 订单数
+  "订单数"
+  orderCount: Int!
+  # 评论数
+  "评论数"
+  commentCount: Int!
+  # 标签
+  "标签"
+  labels: [HotelLabel!]!
+}
+
+"""
+酒店详情
+"""
+type HotelDetail {
+  # 酒店id
+  "酒店id"
+  id: Int!
+  # 酒店信息
+  "酒店信息"
+  info: HotelInfo!
+  # 星级
+  "星级"
+  star: HotelStar!
+  # 房型
+  "房型"
+  roomTypes: [RoomType!]!
+  # 图片集
+  "图片集"
+  images: [HotelImage!]!
+  # 电话
+  "电话"
+  landLines: [HotelLandLine!]!
+  # 手机号
+  "手机号"
+  phones: [HotelPhone!]!
+  # 名字
+  "名字"
+  name: String!
+  # 子名字
+  "子名字"
+  subName: String!
+  # 省份
+  "省份"
+  province: String!
+  # 城市
+  "城市"
+  city: String!
+  # 地区
+  "地区"
+  district: String!
+  # 街道
+  "街道"
+  street: String!
+  # 详细地址
+  "详细地址"
+  address: String!
+  # 经度
+  "经度"
+  longitude: Float!
+  # 纬度
+  "纬度"
+  latitude: Float!
+  # 介绍
+  "介绍"
+  introduction: String!
+  # 是否有智能锁
+  "是否有智能锁"
+  hasSmartLock: Boolean!
+  # 最后装修时间
+  "最后装修时间"
+  renovationTime: Float!
+  # 距离
+  "距离"
+  distance: Int!
+  # 最低价格
+  "最低价格"
+  minPrice: Int!
+  # 订单数
+  "订单数"
+  orderCount: Int!
+  # 评论数
+  "评论数"
+  commentCount: Int!
+  # 好评数
+  "好评数"
+  highRateCommentCount: Int!
+  # 优惠券
+  "优惠券"
+  coupons: [Coupon!]!
+}
+
+"""
+酒店房型信息
+"""
+type HotelRoomType {
+  # 酒店id
+  "酒店id"
+  id: Int!
+  # 房型
+  "房型"
+  roomTypes: [RoomType!]!
+}
+
+"""
+员工酒店信息
+"""
+interface StaffHotel {
+  # 酒店id
+  "酒店id"
+  id: Int!
+  # 酒店名称
+  "酒店名称"
+  name: String!
+  # 子名字
+  "子名字"
+  subName: String
+  # 是否有智能锁
+  "是否有智能锁"
+  hasSmartLock: Boolean!
+}
+
+"""
+管理员后台酒店信息
+"""
+type AdminHotel implements StaffHotel {
+  # 酒店id
+  "酒店id"
+  id: Int!
+  # 名字
+  "名字"
+  name: String!
+  # 子名字
+  "子名字"
+  subName: String!
+  # 是否有智能锁
+  "是否有智能锁"
+  hasSmartLock: Boolean!
+  # 酒店基础信息
+  "酒店基础信息"
+  baseHotelInfo: BaseHotelInfo!
+  # 酒店高级信息
+  "酒店高级信息"
+  higherHotelInfo: HigherHotelInfo!
+}
+
+"""
+客房后台酒店信息
+"""
+type SweeperHotel implements StaffHotel {
+  # 酒店id
+  "酒店id"
+  id: Int!
+  # 酒店名称
+  "酒店名称"
+  name: String!
+  # 子名字
+  "子名字"
+  subName: String
+  # 是否有智能锁
+  "是否有智能锁"
+  hasSmartLock: Boolean!
+}
+
+"""
+酒店基础信息
+"""
+type BaseHotelInfo {
+  # id
+  "id"
+  id: Int!
+  # 座机号
+  "座机号"
+  landLines: [String!]!
+  # 手机号
+  "手机号"
+  phones: [String!]!
+  # 地址
+  "地址"
+  address: String!
+  # 营业状态
+  "营业状态"
+  status: Int!
+  # 经度
+  "经度"
+  longitude: Float!
+  # 纬度
+  "纬度"
+  latitude: Float!
+  # 省份
+  "省份"
+  province: String!
+  # 城市
+  "城市"
+  city: String!
+  # 区县
+  "区县"
+  district: String!
+  # 审核状态
+  "审核状态"
+  auditState: Int!
+  # 审核建议
+  "审核建议"
+  suggestion: String
+}
+
+"""
+酒店基础信息输入
+"""
+input BaseHotelInfoInput {
+  # id
+  "id"
+  id: Int!
+  # 座机号
+  "座机号"
+  landLines: [String!]!
+  # 手机号
+  "手机号"
+  phones: [String!]!
+  # 地址
+  "地址"
+  address: String!
+  # 营业状态
+  "营业状态"
+  status: Int!
+  # 省份
+  "省份"
+  province: String!
+  # 城市
+  "城市"
+  city: String!
+  # 区县
+  "区县"
+  district: String!
+}
+
+"""
+酒店高级信息
+"""
+type HigherHotelInfo {
+  # id
+  "id"
+  id: Int!
+  # 酒店类型id
+  "酒店类型id"
+  hotelType: Int!
+  # 最近装修时间
+  "最近装修时间"
+  renovationTime: Float!
+  # 酒店简介
+  "酒店简介"
+  introduction: String!
+  # 押金
+  "押金"
+  deposit: Int!
+  # 最早入住时间
+  "最早入住时间"
+  startTime: String!
+  # 最晚入住时间
+  "最晚入住时间"
+  endTime: String!
+  # 最晚离店时间
+  "最晚离店时间"
+  checkoutTime: String!
+  # 最晚取消时间
+  "最晚取消时间"
+  cancelTime: String!
+  # 周末时间
+  "周末时间"
+  weekend: [Int!]!
+  # 审核状态
+  "审核状态"
+  auditState: Int!
+  # 审核建议
+  "审核建议"
+  suggestion: String
+}
+
+"""
+酒店高级信息输入
+"""
+input HigherHotelInfoInput {
+  # id
+  "id"
+  id: Int!
+  # 酒店类型id
+  "酒店类型id"
+  hotelType: Int!
+  # 最近装修时间
+  "最近装修时间"
+  renovationTime: Float!
+  # 酒店简介
+  "酒店简介"
+  introduction: String!
+  # 押金
+  "押金"
+  deposit: Int!
+  # 最早入住时间
+  "最早入住时间"
+  startTime: String!
+  # 最晚入住时间
+  "最晚入住时间"
+  endTime: String!
+  # 最晚离店时间
+  "最晚离店时间"
+  checkoutTime: String!
+  # 最晚取消时间
+  "最晚取消时间"
+  cancelTime: String!
+  # 周末时间
+  "周末时间"
+  weekend: [Int!]!
+}
+
+"""
+会员收藏或浏览记录
+"""
+type MemberCollectionView {
+  # 酒店id
+  "酒店id"
+  hotelId: Int!
+  # 收藏或浏览时间
+  "收藏或浏览时间"
+  createdTime: Float!
+}
+
+"""
+会员等级
+"""
+type MemberLevel {
+  # 会员等级id
+  "会员等级id"
+  id: Int!
+  # 名称
+  "名称"
+  name: String!
+  # 图标
+  "图标"
+  icon: String!
+  # 折扣
+  "折扣"
+  discount: Int!
+  # 积分倍数
+  "积分倍数"
+  pointsMultiple: Int!
+  # 描述
+  "描述"
+  description: String!
+}
+
+"""
+入住人
+"""
+type CheckInMan {
+  # 入住人id
+  "入住人id"
+  id: Int!
+  # 是否本人
+  "是否本人"
+  isSelf: Boolean!
+  # 姓名
+  "姓名"
+  name: String!
+  # 身份证号
+  "身份证号"
+  idCard: String
+  # 性别
+  "性别"
+  gender: Int
+  # 状态
+  "状态"
+  status: Int!
+  # 创建时间
+  "创建时间"
+  createdTime: Float!
+  # 身份证加密
+  "身份证加密"
+  tag: String!
+}
+
+"""
+会员优惠券
+"""
+type MemberCoupon {
+  # 会员优惠券id
+  "会员优惠券id"
+  id: Int!
+  # 优惠券
+  "优惠券"
+  coupon: Coupon!
+  # 状态
+  "状态"
+  status: Int!
+  # 使用时间
+  "使用时间"
+  usedTime: Float
+  # 领取时间
+  "领取时间"
+  createdTime: Float!
+}
+
+"""
+会员信息
+"""
+type Member {
+  # 会员id
+  "会员id"
+  id: Int!
+  # 会员openId
+  "会员openId"
+  openId: String!
+  # 等级
+  "等级"
+  level: MemberLevel!
+  # 昵称
+  "昵称"
+  nickname: String!
+  # 头像
+  "头像"
+  avatar: String!
+  # 手机号
+  "手机号"
+  phone: String
+  # 是否读取过条约
+  "是否读取过条约"
+  isRead: Boolean!
+  # 状态
+  "状态"
+  status: Int!
+  # 成长值
+  "成长值"
+  growth: Int!
+  # 积分
+  "积分"
+  points: Int!
+  # 创建时间
+  "创建时间"
+  createdTime: Float!
+  # 入住人
+  "入住人"
+  checkInMen: [CheckInMan!]!
+  # 优惠券（MemberCoupon）
+  "优惠券（MemberCoupon）"
+  coupons: [MemberCoupon!]!
+  # 待处理订单
+  "待处理订单"
+  onProcessingOrders: [OnProcessingOrder!]!
+  # 收藏酒店数组
+  "收藏酒店数组"
+  collections: [MemberCollectionView!]!
+  # 浏览酒店数组
+  "浏览酒店数组"
+  views: [MemberCollectionView!]!
+}
+
+"""
+会员公开信息
+"""
+type PublicMember {
+  # id
+  "id"
+  id: Int!
+  # 等级
+  "等级"
+  level: MemberLevel!
+  # 昵称
+  "昵称"
+  nickname: String!
+  # 头像
+  "头像"
+  avatar: String!
+}
+
+"""
+评论会员信息
+"""
+type CommentMember {
+  # 会员id
+  "会员id"
+  id: Int!
+  # 等级
+  "等级"
+  level: MemberLevel!
+  # 昵称
+  "昵称"
+  nickname: String!
+  # 头像
+  "头像"
+  avatar: String!
+  # 状态
+  "状态"
+  status: Int!
+  # 创建时间
+  "创建时间"
+  createdTime: Float!
+}
+
+"""
+消费品
+"""
+type Merchandise {
+  # 消费品id
+  "消费品id"
+  id: Int!
+  # 酒店id
+  "酒店id"
+  hotelId: Int!
+  # 名称
+  "名称"
+  name: String!
+  # 单位
+  "单位"
+  unit: String!
+  # 价格
+  "价格"
+  price: Int!
+  # 封面
+  "封面"
+  cover: String!
+  # 状态
+  "状态"
+  status: Int!
+}
+
+"""
+消费记录
+"""
+type Consumption {
+  # 消费记录id
+  "消费记录id"
+  id: Int!
+  # 订单房间id
+  "订单房间id"
+  orderRoomId: Int!
+  # 消费品
+  "消费品"
+  merchandise: Merchandise!
+  # 数量
+  "数量"
+  quantity: Int!
+}
+
+"""
+订单价格
+"""
+type OrderPrice {
+  # id
+  "id"
+  id: Int!
+  # 订单id
+  "订单id"
+  orderId: Int!
+  # 开始时间
+  "开始时间"
+  startTime: Float!
+  # 结束时间
+  "结束时间"
+  endTime: Float!
+  # 价格
+  "价格"
+  price: Int!
+}
+
+"""
+订单价格输入类型
+"""
+input OrderPriceInput {
+  # 开始时间
+  "开始时间"
+  startTime: Float!
+  # 结束时间
+  "结束时间"
+  endTime: Float!
+  # 价格
+  "价格"
+  price: Int!
+}
+
+"""
+订单状态时间线
+"""
+type OrderStatusTimeLine {
+  # 状态实践线id
+  "状态实践线id"
+  id: Int!
+  # 订单id
+  "订单id"
+  orderId: Int!
+  # 状态
+  "状态"
+  status: Int!
+  # 创建时间
+  "创建时间"
+  createdTime: Float!
+}
+
+"""
+订单交易
+"""
+type OrderTransaction {
+  # 交易id
+  "交易id"
+  id: Int!
+  # 交易动作
+  "交易动作"
+  transactionAction: Int!
+  # 订单id
+  "订单id"
+  orderId: Int!
+  # 金额
+  "金额"
+  money: Int!
+  # 模式
+  "模式"
+  mode: Int
+  # 状态
+  "状态"
+  status: Int!
+  # 消息
+  "消息"
+  message: String
+  # 交易时间
+  "交易时间"
+  transactionTime: Float
+  # 创建时间
+  "创建时间"
+  createdTime: Float!
+}
+
+"""
+订单列表
+"""
+type OrderList {
+  # 总数
+  "总数"
+  total: Int!
+  # 订单列表
+  "订单列表"
+  orders: [Order!]!
+}
+
+"""
+订单
+"""
+type Order {
+  # 订单id
+  "订单id"
+  id: Int!
+  # 订单人
+  "订单人"
+  orderMember: PublicMember!
+  # 房间数
+  "房间数"
+  roomCount: Int!
+  # 联系人
+  "联系人"
+  contact: String!
+  # 当前状态
+  "当前状态"
+  status: Int!
+  # 入住时间
+  "入住时间"
+  startTime: Float!
+  # 离店时间
+  "离店时间"
+  endTime: Float!
+  # 订单价格数组
+  "订单价格数组"
+  orderPrices: [OrderPrice!]!
+  # 押金
+  "押金"
+  deposit: Int!
+  # 支付方式
+  "支付方式"
+  payMode: Int
+  # 总价
+  "总价"
+  totalMoney: Int!
+  # 真总价
+  "真总价"
+  realTotalMoney: Int!
+  # 联系电话
+  "联系电话"
+  phone: String!
+  # 是否锁定订单
+  "是否锁定订单"
+  isLocked: Boolean!
+  # 是否评价
+  "是否评价"
+  isCommented: Boolean!
+  # 是否全部确认消费
+  "是否全部确认消费"
+  isConsumed: Boolean!
+  # 备注
+  "备注"
+  remark: String
+  # 取消理由
+  "取消理由"
+  reason: String
+  # 创建时间
+  "创建时间"
+  createdTime: Float!
+  # 酒店信息
+  "酒店信息"
+  hotel: OrderHotel!
+  # 房型
+  "房型"
+  roomType: RoomType!
+  # 订单房间
+  "订单房间"
+  orderRooms: [OrderRoom]!
+  # 订单状态时间线数组
+  "订单状态时间线数组"
+  statuses: [OrderStatusTimeLine]!
+  # 订单交易数组
+  "订单交易数组"
+  transactions: [OrderTransaction!]!
+  # 父订单（为空时该订单为根订单）
+  "父订单（为空时该订单为根订单）"
+  parentId: Int
+}
+
+"""
+待处理订单
+"""
+type OnProcessingOrder {
+  # 订单id
+  "订单id"
+  id: Int!
+  # 当前状态
+  "当前状态"
+  status: Int!
+  # 押金
+  "押金"
+  deposit: Int!
+  # 待付款金额
+  "待付款金额"
+  totalMoney: Int!
+}
+
+"""
+评论订单信息
+"""
+type CommentOrder {
+  # 订单id
+  "订单id"
+  id: Int!
+  # 酒店信息
+  "酒店信息"
+  hotel: Hotel!
+  # 开始时间
+  "开始时间"
+  startTime: Float!
+  # 结束时间
+  "结束时间"
+  endTime: Float!
+  # 房型
+  "房型"
+  roomType: RoomType!
+}
+
+"""
+房间入住人
+"""
+input CheckInMenRoom {
+  # 房间id
+  "房间id"
+  roomId: Int!
+  # 入住人id数组
+  "入住人id数组"
+  checkInMen: [Int!]!
+}
+
+"""
+续房房间入住人
+"""
+input StayCheckInMenRoom {
+  # 房间id
+  "房间id"
+  roomId: Int!
+  # 原始OrderRoom id
+  "原始OrderRoom id"
+  originOrderRoomId: Int!
+  # 入住人id数组
+  "入住人id数组"
+  checkInMen: [Int!]!
+}
+
+"""
+订单房间入住人
+"""
+type RoomCheckInMan {
+  # id
+  "id"
+  id: Int!
+  # 订单房间id
+  "订单房间id"
+  orderRoomId: Int!
+  # 入住人
+  "入住人"
+  checkInMan: CheckInMan!
+  # 角色
+  "角色"
+  role: Int!
+}
+
+"""
+拥有房间
+"""
+type OwnRoom {
+  # 房间信息
+  "房间信息"
+  room: PublicRoom!
+  # 入住人数组
+  "入住人数组"
+  roomCheckInMen: [RoomCheckInMan!]!
+}
+
+"""
+房型标签
+"""
+type RoomTypeLabel {
+  # 房型标签id
+  "房型标签id"
+  id: Int!
+  # 描述
+  "描述"
+  description: String!
+}
+
+"""
+特价
+"""
+type SpecialPrice {
+  # 特价id
+  "特价id"
+  id: Int!
+  # 开始时间
+  "开始时间"
+  startTime: Float!
+  # 结束时间
+  "结束时间"
+  endTime: Float!
+  # 价格
+  "价格"
+  price: Int!
+  # 描述
+  "描述"
+  description: String!
+}
+
+"""
+特价输入类
+"""
+input SpecialPriceInput {
+  # 开始时间
+  "开始时间"
+  startTime: Float!
+  # 结束时间
+  "结束时间"
+  endTime: Float!
+  # 价格
+  "价格"
+  price: Int!
+  # 描述
+  "描述"
+  description: String!
+}
+
+"""
+房型
+"""
+type RoomType {
+  # 房型id
+  "房型id"
+  id: Int!
+  # 标签
+  "标签"
+  labels: [RoomTypeLabel!]!
+  # 价格
+  "价格"
+  prices: [Int!]!
+  # 特价
+  "特价"
+  specialPrices: [SpecialPrice!]!
+  # 名称
+  "名称"
+  name: String!
+  # 人数容量
+  "人数容量"
+  capacity: Int!
+  # 介绍
+  "介绍"
+  introduction: String!
+  # 钟点房价格
+  "钟点房价格"
+  hourlyPrice: Int!
+  # 超出时间每半小时价格
+  "超出时间每半小时价格"
+  hourlyOutOfPrice: Int!
+  # 当前房间余量（仅酒店查询存在）
+  "当前房间余量（仅酒店查询存在）"
+  currentCount: Int
+  # 封面
+  "封面"
+  cover: String!
+}
+
+"""
+房型公开信息
+"""
+type PublicRoomType {
+  # id
+  "id"
+  id: Int!
+  # 名称
+  "名称"
+  name: String!
+  # 人数容量
+  "人数容量"
+  capacity: Int!
+  # 封面
+  "封面"
+  cover: String!
+  # 简介
+  "简介"
+  introduction: String!
+}
+
+"""
+房间公开信息
+"""
+type PublicRoom {
+  # id
+  "id"
+  id: Int!
+  # 房型
+  "房型"
+  roomType: PublicRoomType!
+  # 建筑
+  "建筑"
+  building: String!
+  # 楼层
+  "楼层"
+  floor: Int!
+  # 房间号
+  "房间号"
+  door: String!
+}
+
+"""
+订单房间
+"""
+type OrderRoom {
+  # id
+  "id"
+  id: Int!
+  # 订单id
+  "订单id"
+  orderId: Int!
+  # 房间信息
+  "房间信息"
+  room: PublicRoom!
+  # 状态
+  "状态"
+  status: Int!
+  # 是否确认消费
+  "是否确认消费"
+  isConsumed: Boolean!
+  # 退房时间
+  "退房时间"
+  checkoutTime: Float
+  # 入住人
+  "入住人"
+  roomCheckInMen: [RoomCheckInMan!]!
+  # 消费列表
+  "消费列表"
+  consumptions: [Consumption!]!
+}
+
+"""
+打扫订单房间
+"""
+type SweepOrderRoom {
+  # 订单房间id
+  "订单房间id"
+  id: Int!
+  # 开始时间
+  "开始时间"
+  startTime: Float!
+  # 结束时间
+  "结束时间"
+  endTime: Float!
+  # 是否已确定消费
+  "是否已确定消费"
+  isConsumed: Boolean!
+  # 消费记录
+  "消费记录"
+  consumptions: [Consumption!]!
+  # 酒店消费品列表
+  "酒店消费品列表"
+  merchandises: [Merchandise!]!
+}
+
+"""
+每月价格
+"""
+type MonthPrice {
+  # 月份
+  "月份"
+  month: Int!
+  # 价格
+  "价格"
+  price: Int!
+}
+
+"""
+每月价格输入类
+"""
+input MonthPriceInput {
+  # 月份
+  "月份"
+  month: Int!
+  # 价格
+  "价格"
+  price: Int!
+}
+
+"""
+员工酒店房型
+"""
+interface StaffRoomType {
+  # 房型id
+  "房型id"
+  id: Int!
+  # 名称
+  "名称"
+  name: String!
+  # 容量
+  "容量"
+  capacity: Int!
+  # 封面
+  "封面"
+  cover: String!
+  # 介绍
+  "介绍"
+  introduction: String!
+  # 审核状态
+  "审核状态"
+  auditStatus: Int!
+  # 状态
+  "状态"
+  status: Int!
+}
+
+"""
+后台酒店房型信息
+"""
+type AdminRoomType implements StaffRoomType {
+  # 房型id
+  "房型id"
+  id: Int!
+  # 名称
+  "名称"
+  name: String!
+  # 容量
+  "容量"
+  capacity: Int!
+  # 封面
+  "封面"
+  cover: String!
+  # 介绍
+  "介绍"
+  introduction: String!
+  # 审核状态
+  "审核状态"
+  auditStatus: Int!
+  # 状态
+  "状态"
+  status: Int!
+  # 房间数
+  "房间数"
+  roomCount: Int!
+  # 是否可为钟点房
+  "是否可为钟点房"
+  hourlyRoom: Int!
+  # 钟点房价格
+  "钟点房价格"
+  hourlyPrice: Int!
+  # 钟点房超出半小时价格
+  "钟点房超出半小时价格"
+  hourlyOutOfPrice: Int!
+  # 工作日房价
+  "工作日房价"
+  workPrice: [MonthPrice!]!
+  # 周末房价
+  "周末房价"
+  weekendPrice: [MonthPrice!]!
+  # 特价
+  "特价"
+  specialTime: [SpecialPrice!]!
+  # 标签
+  "标签"
+  tags: [String!]!
+  # 是否独立卫生间
+  "是否独立卫生间"
+  toilet: Int!
+  # 是否洗漱用品
+  "是否洗漱用品"
+  toiletries: Int!
+  # 是否淋浴
+  "是否淋浴"
+  shower: Int!
+  # 是否24小时热水
+  "是否24小时热水"
+  hotWater: Int!
+  # 是否吹风机
+  "是否吹风机"
+  blower: Int!
+  # 上网方式
+  "上网方式"
+  internet: [Int!]!
+  # 是否空气净化器
+  "是否空气净化器"
+  airCleaner: Int!
+  # 图片集
+  "图片集"
+  pictures: [String!]!
+}
+
+"""
+客房酒店房型
+"""
+type SweeperRoomType implements StaffRoomType {
+  # 房型id
+  "房型id"
+  id: Int!
+  # 名称
+  "名称"
+  name: String!
+  # 容量
+  "容量"
+  capacity: Int!
+  # 封面
+  "封面"
+  cover: String!
+  # 介绍
+  "介绍"
+  introduction: String!
+  # 审核状态
+  "审核状态"
+  auditStatus: Int!
+  # 状态
+  "状态"
+  status: Int!
+}
+
+"""
+房间状态
+"""
+type RoomStatus {
+  # 房间状态id
+  "房间状态id"
+  id: Int!
+  # 标识码
+  "标识码"
+  code: String!
+  # 状态
+  "状态"
+  status: String!
+  # 描述
+  "描述"
+  description: String!
+}
+
+"""
+员工酒店房间
+"""
+interface StaffRoom {
+  # 房间id
+  "房间id"
+  id: Int!
+  # 房型
+  "房型"
+  roomType: StaffRoomType!
+  # 状态
+  "状态"
+  status: RoomStatus!
+  # 建筑
+  "建筑"
+  building: String!
+  # 楼层
+  "楼层"
+  floor: Int!
+  # 门牌
+  "门牌"
+  door: String!
+  # 是否可为钟点房
+  "是否可为钟点房"
+  isHourly: Boolean!
+}
+
+"""
+后台酒店房间
+"""
+type AdminRoom implements StaffRoom {
+  # 房间id
+  "房间id"
+  id: Int!
+  # 房型
+  "房型"
+  roomType: StaffRoomType!
+  # 状态
+  "状态"
+  status: RoomStatus!
+  # 建筑
+  "建筑"
+  building: String!
+  # 楼层
+  "楼层"
+  floor: Int!
+  # 门牌
+  "门牌"
+  door: String!
+  # 智能锁ip
+  "智能锁ip"
+  lockIP: String
+  # 是否可为钟点房
+  "是否可为钟点房"
+  isHourly: Boolean!
+}
+
+"""
+客房酒店房间
+"""
+type SweeperRoom implements StaffRoom {
+  # 房间id
+  "房间id"
+  id: Int!
+  # 房型
+  "房型"
+  roomType: StaffRoomType!
+  # 状态
+  "状态"
+  status: RoomStatus!
+  # 建筑
+  "建筑"
+  building: String!
+  # 楼层
+  "楼层"
+  floor: Int!
+  # 门牌
+  "门牌"
+  door: String!
+  # 是否可一键开锁
+  "是否可一键开锁"
+  isLockIP: Boolean!
+  # 是否可为钟点房
+  "是否可为钟点房"
+  isHourly: Boolean!
+}
+
+"""
+员工酒店房间基础信息
+"""
+interface StaffRoomBase {
+  # 房间id
+  "房间id"
+  id: Int!
+  # 建筑
+  "建筑"
+  building: String!
+  # 楼层
+  "楼层"
+  floor: Int!
+  # 门牌
+  "门牌"
+  door: String!
+}
+
+"""
+后台酒店房间基础信息
+"""
+type AdminRoomBase implements StaffRoomBase {
+  # 房间id
+  "房间id"
+  id: Int!
+  # 房型
+  "房型"
+  roomType: AdminRoomType!
+  # 房间状态
+  "房间状态"
+  roomStatus: Int!
+  # 建筑
+  "建筑"
+  building: String!
+  # 楼层
+  "楼层"
+  floor: Int!
+  # 门牌
+  "门牌"
+  door: String!
+  # 智能锁ip
+  "智能锁ip"
+  lockIP: String
+  # 是否无人房
+  "是否无人房"
+  isNoMan: Int!
+  # 是否可为钟点房
+  "是否可为钟点房"
+  isHourly: Int!
+}
+
+"""
+客房酒店房间基础信息
+"""
+type SweeperRoomBase implements StaffRoomBase {
+  # 房间id
+  "房间id"
+  id: Int!
+  # 建筑
+  "建筑"
+  building: String!
+  # 楼层
+  "楼层"
+  floor: Int!
+  # 门牌
+  "门牌"
+  door: String!
+  # 是否可为钟点房
+  "是否可为钟点房"
+  isHourly: Boolean!
+}
+
+"""
+申请入住人信息
+"""
+type RequestCheckInMan {
+  # id
+  "id"
+  id: Int!
+  # 真实姓名
+  "真实姓名"
+  name: String!
+  # 身份证加密
+  "身份证加密"
+  tag: String!
+}
+
+"""
+申请入住
+"""
+type RequestCheckIn {
+  # id
+  "id"
+  id: Int!
+  # 订单id
+  "订单id"
+  orderId: Int!
+  # 发起会员id
+  "发起会员id"
+  originMember: PublicMember!
+  # 目标会员id
+  "目标会员id"
+  targetMember: PublicMember!
+  # 是否确认
+  "是否确认"
+  isConfirmed: Boolean!
+  # 确认时间
+  "确认时间"
+  confirmedTime: Float
+  # 申请时间
+  "申请时间"
+  createdTime: Float!
+  # 申请人
+  "申请人"
+  checkInMan: RequestCheckInMan!
+}
+
+"""
+申请权限
+"""
+type RequestAuthority {
+  # id
+  "id"
+  id: Int!
+  # 订单房间
+  "订单房间"
+  orderRoom: OrderRoom!
+  # 发起会员id
+  "发起会员id"
+  originMember: PublicMember!
+  # 目标会员id
+  "目标会员id"
+  targetMember: PublicMember!
+  # 是否确认
+  "是否确认"
+  isConfirmed: Boolean!
+  # 确认时间
+  "确认时间"
+  confirmedTime: Float
+  # 申请时间
+  "申请时间"
+  createdTime: Float!
+  # 申请人
+  "申请人"
+  checkInMan: RequestCheckInMan!
+}
+
+"""
+员工信息
+"""
+type Staff {
+  # 酒店员工id
+  "酒店员工id"
+  id: Int!
+  # 酒店id（为0时为系统员工）
+  "酒店id（为0时为系统员工）"
+  hotelId: Int!
+  # 酒店信息（系统员工该字段为空）
+  "酒店信息（系统员工该字段为空）"
+  hotel: StaffHotel
+  # 姓名
+  "姓名"
+  username: String!
+  # 头像
+  "头像"
+  avatar: String!
+  # 状态
+  "状态"
+  status: Int!
+  # 注册时间
+  "注册时间"
+  createdTime: Float
+}
+
+type roomTypeStatisc {
+  id: Int!
+  number: Int!
+  name: String!
+}
+
+type orderStatisc {
+  roomType: RoomType!
+  orders: [Order!]!
+}
+
+"""
+用户接口
+"""
+interface User {
+  # 用户id
+  "用户id"
+  id: Int!
+}
+
+"""
+带名字的用户
+"""
+type Username implements User {
+  # 用户id
+  "用户id"
+  id: Int!
+  # 用户名
+  "用户名"
+  name: String!
+}
+
+"""
+带年龄的用户
+"""
+type UserAge implements User {
+  # 用户id
+  "用户id"
+  id: Int!
+  # 用户名
+  "用户名"
+  name: String!
+  # 年龄
+  "年龄"
+  age: Int!
+}
+
+"""
+微信敏感数据
+"""
+input CryptoData {
+  # 临时登录凭证
+  "临时登录凭证"
+  code: String!
+  # 加密数据
+  "加密数据"
+  encryptedData: String!
+  # 加密算法初始向量
+  "加密算法初始向量"
+  iv: String!
+}
+
+"""
+微信用户信息
+"""
+input UserInfo {
+  # 昵称
+  "昵称"
+  nickName: String!
+  # 头像
+  "头像"
+  avatarUrl: String!
+  # 性别
+  "性别"
+  gender: Int!
+}
+
+"""
+统一下单返回数据
+"""
+type UnifiedOrderData {
+  # 时间戳
+  "时间戳"
+  timeStamp: String!
+  # 随机字符串
+  "随机字符串"
+  nonceStr: String!
+  # 数据包
+  "数据包"
+  package: String!
+  # 签名方式
+  "签名方式"
+  signType: String!
+  # 签名
+  "签名"
+  paySign: String!
+}

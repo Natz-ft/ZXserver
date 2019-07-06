@@ -1,0 +1,145 @@
+"""
+订单价格
+"""
+type OrderPrice {
+  "id"
+  id: Int!
+  "订单id"
+  orderId: Int!
+  "开始时间"
+  startTime: Float!
+  "结束时间"
+  endTime: Float!
+  "价格"
+  price: Int!
+}
+
+"""
+订单价格输入类型
+"""
+input OrderPriceInput {
+  "开始时间"
+  startTime: Float!
+  "结束时间"
+  endTime: Float!
+  "价格"
+  price: Int!
+}
+
+"""
+订单状态时间线
+"""
+type OrderStatusTimeLine {
+  "状态实践线id"
+  id: Int!
+  "订单id"
+  orderId: Int!
+  "状态"
+  status: Int!
+  "创建时间"
+  createdTime: Float!
+}
+
+"""
+订单交易
+"""
+type OrderTransaction {
+  "交易id"
+  id: Int!
+  "交易动作"
+  transactionAction: Int!
+  "订单id"
+  orderId: Int!
+  "金额"
+  money: Int!
+  "模式"
+  mode: Int
+  "状态"
+  status: Int!
+  "消息"
+  message: String
+  "交易时间"
+  transactionTime: Float
+  "创建时间"
+  createdTime: Float!
+}
+
+"""
+订单列表
+"""
+type OrderList {
+  "总数"
+  total: Int!
+  "订单列表"
+  orders: [Order!]!
+}
+
+"""
+订单
+"""
+type Order {
+  "订单id"
+  id: Int!
+  "订单人"
+  orderMember: PublicMember!
+  "房间数"
+  roomCount: Int!
+  "联系人"
+  contact: String!
+  "当前状态"
+  status: Int!
+  "入住时间"
+  startTime: Float!
+  "离店时间"
+  endTime: Float!
+  "订单价格数组"
+  orderPrices: [OrderPrice!]!
+  "押金"
+  deposit: Int!
+  "支付方式"
+  payMode: Int
+  "总价"
+  totalMoney: Int!
+  "真总价"
+  realTotalMoney: Int!
+  "联系电话"
+  phone: String!
+  "是否锁定订单"
+  isLocked: Boolean!
+  "是否评价"
+  isCommented: Boolean!
+  "是否全部确认消费"
+  isConsumed: Boolean!
+  "备注"
+  remark: String
+  "取消理由"
+  reason: String
+  "创建时间"
+  createdTime: Float!
+  "酒店信息"
+  hotel: OrderHotel!
+  "房型"
+  roomType: RoomType!
+  "订单房间"
+  orderRooms: [OrderRoom]!
+  "订单状态时间线数组"
+  statuses: [OrderStatusTimeLine]!
+  "订单交易数组"
+  transactions: [OrderTransaction!]!
+  "父订单（为空时该订单为根订单）"
+  parentId: Int
+}
+
+"""
+待处理订单
+"""
+type OnProcessingOrder {
+  "订单id"
+  id: Int!
+  "当前状态"
+  status: Int!
+  "押金"
+  deposit: Int!
+  "待付款金额"
+  totalMoney: Int!
+}

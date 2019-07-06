@@ -1,0 +1,33 @@
+"""
+消费品
+"""
+type Merchandise {
+  "消费品id"
+  id: Int!
+  "酒店id"
+  hotelId: Int!
+  "名称"
+  name: String!
+  "单位"
+  unit: String!
+  "价格"
+  price: Int!
+  "封面"
+  cover: String!
+  "状态"
+  status: Int!
+}
+
+"""
+消费记录
+"""
+type Consumption {
+  "消费记录id"
+  id: Int!
+  "订单房间id"
+  orderRoomId: Int!
+  "消费品"
+  merchandise: Merchandise!
+  "数量"
+  quantity: Int!
+}

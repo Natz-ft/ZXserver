@@ -1,0 +1,9 @@
+type Query {
+  """
+  获取openId=>openId（会员，游客）
+  """
+  openId (
+    "微信code"
+    code: String!
+  ): String!
+}

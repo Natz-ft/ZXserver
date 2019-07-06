@@ -1,0 +1,46 @@
+type Query {
+  """
+  获取酒店房间=>酒店房间（酒店员工）
+  """
+  roomsByHotelId (
+    "酒店id"
+    hotelId: Int!
+    "状态"
+    statuses: [Int!]!
+  ): [StaffRoom!]!
+  """
+  获取酒店房型=>酒店房型（酒店员工）
+  """
+  roomTypesByHotelId (
+    "酒店id"
+    hotelId: Int!
+  ): [StaffRoomType!]!
+  """
+  获取可换房=>可换房房间（酒店员工）
+  """
+  changeableRooms (
+    "房间id"
+    id: Int!
+  ): [StaffRoomBase!]!
+  """
+  获取酒店房间基础=>酒店房间基础（酒店员工）
+  """
+  roomBasesByHotelId (
+    "酒店id"
+    hotelId: Int!
+  ): [StaffRoomBase!]!
+  """
+  获取打扫的订单房间=>订单房间详情（酒店员工（打扫））
+  """
+  sweepOrderRoom (
+    "房间id"
+    id: Int!
+  ): SweepOrderRoom
+  """
+  获取订单可选房间=>房间列表
+  """
+  selectableRooms (
+    "订单id"
+    orderId: Int!
+  ): [StaffRoomBase!]!
+}

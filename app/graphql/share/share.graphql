@@ -1,0 +1,56 @@
+"""
+申请入住人信息
+"""
+type RequestCheckInMan {
+  "id"
+  id: Int!
+  "真实姓名"
+  name: String!
+  "身份证加密"
+  tag: String!
+}
+
+"""
+申请入住
+"""
+type RequestCheckIn {
+  "id"
+  id: Int!
+  "订单id"
+  orderId: Int!
+  "发起会员id"
+  originMember: PublicMember!
+  "目标会员id"
+  targetMember: PublicMember!
+  "是否确认"
+  isConfirmed: Boolean!
+  "确认时间"
+  confirmedTime: Float
+  "申请时间"
+  createdTime: Float!
+  "申请人"
+  checkInMan: RequestCheckInMan!
+}
+
+"""
+申请权限
+"""
+type RequestAuthority {
+  "id"
+  id: Int!
+  "订单房间"
+  orderRoom: OrderRoom!
+  "发起会员id"
+  originMember: PublicMember!
+  "目标会员id"
+  targetMember: PublicMember!
+  "是否确认"
+  isConfirmed: Boolean!
+  "确认时间"
+  confirmedTime: Float
+  "申请时间"
+  createdTime: Float!
+  "申请人"
+  checkInMan: RequestCheckInMan!
+}
+

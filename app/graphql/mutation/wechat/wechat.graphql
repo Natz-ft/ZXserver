@@ -1,0 +1,29 @@
+type Mutation {
+  """
+  微信登录=>用户信息（会员，游客）
+  """
+  login (
+    "敏感数据"
+    cryptoData: CryptoData!
+    "微信会员信息"
+    userInfo: UserInfo
+  ): Member!
+  """
+  微信绑定=>会员id（会员）
+  """
+  bind (
+    "敏感数据"
+    cryptoData: CryptoData!
+    "会员id"
+    memberId: Int!
+  ): Int
+  """
+  微信统一下单=>统一下单信息（会员，游客）
+  """
+  unifiedOrder (
+    "会员openId"
+    openId: String!
+    "订单号"
+    orderId: Int!
+  ): UnifiedOrderData!
+}

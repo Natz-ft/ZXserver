@@ -1,0 +1,57 @@
+type Query {
+  """
+  查询用户订单列表=>订单列表（会员）
+  """
+  memberOrders (
+    "会员id"
+    id: Int!
+    "订单状态"
+    statuses: [Int!]!
+    "页码"
+    page: Int!
+    "单页个数"
+    size: Int!
+  ): OrderList!
+  """
+  查询用户相关酒店列表=>酒店列表（会员本人）
+  """
+  memberHotels (
+    "会员id"
+    id: Int!
+    "经度"
+    longitude: Float!
+    "纬度"
+    latitude: Float!
+    "页码"
+    page: Int!
+    "单页个数"
+    size: Int!
+    "请求类型"
+    type: Int!
+  ): MemberHotelList!
+  """
+  获取会员未评价订单=>订单列表（会员（订单人））
+  """
+  memberNotCommentOrders (
+    "会员id"
+    id: Int!
+    "页码"
+    page: Int!
+    "单页个数"
+    size: Int!
+  ): OrderList!
+  """
+  获取会员信息=>会员信息（会员本人）
+  """
+  member (
+    "会员id"
+    id: Int!
+  ): Member!
+  """
+  查询订单房间权限人=>权限人会员id
+  """
+  authMember (
+    "订单房间id"
+    orderRoomId: Int!
+  ): Int!
+}

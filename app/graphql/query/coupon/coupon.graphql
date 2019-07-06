@@ -1,0 +1,9 @@
+type Query {
+  """
+  获取优惠券信息=>优惠券信息（会员）
+  """
+  coupon (
+    "优惠券id"
+    id: Int!
+  ): Coupon!
+}

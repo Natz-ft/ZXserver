@@ -1,0 +1,43 @@
+type Query {
+  """
+  查询用户订单申请入住=>申请入住（会员）
+  """
+  requestCheckInInfo (
+    "订单id"
+    orderId: Int!
+    "会员id"
+    memberId: Int!
+  ): RequestCheckIn
+  """
+  查询会员是否已申请授权=>申请授权（会员）
+  """
+  requestAuthorityInfo (
+    "订单房间id"
+    orderRoomId: Int!
+    "openId（暂仅支持微信）"
+    openId: String!
+  ): RequestAuthority
+  """
+  查询订单申请入住列表=>申请入住列表（会员）
+  """
+  requestCheckIns (
+    "订单id"
+    orderId: Int!
+  ): [RequestCheckIn!]!
+  """
+  查询订单房间申请权限列表=>申请权限列表（会员）
+  """
+  requestAuthorities (
+    "订单房间id"
+    orderRoomId: Int!
+  ): [RequestAuthority!]!
+  """
+  查询原始会员某房间是否是权限人=>是否（会员）
+  """
+  isAuthorMan (
+    "原始会员id"
+    originMemberId: Int!
+    "订单房间id"
+    orderRoomId: Int!
+  ): Boolean!
+}

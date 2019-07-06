@@ -1,0 +1,18 @@
+type Mutation {
+  """
+  新增用户=>用户id
+  """
+  addUser (
+    "用户名"
+    name: String!
+    "年龄"
+    age: Int!
+  ): Int
+  """
+  删除用户=>成功与否
+  """
+  removeUser (
+    "用户id"
+    id: Int!
+  ): Boolean!
+}

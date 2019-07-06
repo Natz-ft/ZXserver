@@ -1,0 +1,89 @@
+type Mutation {
+  """
+  手机号登录=>会员信息（会员，游客）
+  """
+  phoneLogin (
+    "手机号"
+    phone: String!
+    "验证码"
+    code: String!
+    "会员id"
+    memberId: Int
+    "来源"
+    source: Int!
+    "授权码"
+    authCode: String
+  ): Member!
+  """
+  绑定手机号=>成功与否（会员）
+  """
+  bindPhone (
+    "会员id"
+    id: Int!
+    "手机号"
+    phone: String!
+    "验证码"
+    code: String!
+  ): Boolean!
+  """
+  更改昵称=>成功与否（会员）
+  """
+  nickname (
+    "会员id"
+    id: Int!
+    "昵称"
+    nickname: String!
+  ): Boolean!
+  """
+  增加入住人（简易）（会员）
+  """
+  addCheckInMan (
+    "会员id"
+    id: Int!
+    "姓名"
+    name: String!
+    "身份证号"
+    idCard: String!
+  ): CheckInMan!
+  """
+  删除入住人（会员）
+  """
+  deleteCheckInMan (
+    "会员id"
+    id: Int!
+    "入住人id"
+    checkInManId: Int!
+  ): Boolean!
+  """
+  收藏酒店=>用户收藏id（会员）
+  """
+  collectHotel (
+    "会员id"
+    id: Int!
+    "酒店id"
+    hotelId: Int!
+  ): Boolean!
+  """
+  取消收藏酒店=>成功与否（会员）
+  """
+  cancelCollectHotel (
+    "会员id"
+    id: Int!
+    "用户收藏id"
+    memberCollectionIds: [Int!]!
+  ): Boolean!
+  """
+  清空浏览记录=>成功与否（会员）
+  """
+  clearViews (
+    "会员id"
+    id: Int!
+  ): Boolean!
+  """
+  评论点赞=>点赞id（会员）
+  """
+  likeComment (
+    "评论id"
+    commentId: Int!
+  ): Int!
+}

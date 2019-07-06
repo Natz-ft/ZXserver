@@ -1,0 +1,18 @@
+type Query {
+  """
+  获取帮助基础列表=>帮助列表（系统员工，会员，游客）
+  """
+  helps (
+    "页码"
+    page: Int!
+    "单页个数"
+    size: Int!
+  ): HelpList!
+  """
+  获取帮助详情=>帮助详情（系统员工，会员，游客）
+  """
+  helpDetail (
+    "帮助id"
+    id: Int!
+  ): HelpDetail!
+}

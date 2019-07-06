@@ -1,0 +1,153 @@
+"""
+员工酒店信息
+"""
+interface StaffHotel {
+  "酒店id"
+  id: Int!
+  "酒店名称"
+  name: String!
+  "子名字"
+  subName: String
+  "是否有智能锁"
+  hasSmartLock: Boolean!
+}
+
+"""
+管理员后台酒店信息
+"""
+type AdminHotel implements StaffHotel {
+  "酒店id"
+  id: Int!
+  "名字"
+  name: String!
+  "子名字"
+  subName: String!
+  "是否有智能锁"
+  hasSmartLock: Boolean!
+  "酒店基础信息"
+  baseHotelInfo: BaseHotelInfo!
+  "酒店高级信息"
+  higherHotelInfo: HigherHotelInfo!
+}
+
+"""
+客房后台酒店信息
+"""
+type SweeperHotel implements StaffHotel {
+  "酒店id"
+  id: Int!
+  "酒店名称"
+  name: String!
+  "子名字"
+  subName: String
+  "是否有智能锁"
+  hasSmartLock: Boolean!
+}
+
+"""
+酒店基础信息
+"""
+type BaseHotelInfo {
+  "id"
+  id: Int!
+  "座机号"
+  landLines: [String!]!
+  "手机号"
+  phones: [String!]!
+  "地址"
+  address: String!
+  "营业状态"
+  status: Int!
+  "经度"
+  longitude: Float!
+  "纬度"
+  latitude: Float!
+  "省份"
+  province: String!
+  "城市"
+  city: String!
+  "区县"
+  district: String!
+  "审核状态"
+  auditState: Int!
+  "审核建议"
+  suggestion: String
+}
+
+"""
+酒店基础信息输入
+"""
+input BaseHotelInfoInput {
+  "id"
+  id: Int!
+  "座机号"
+  landLines: [String!]!
+  "手机号"
+  phones: [String!]!
+  "地址"
+  address: String!
+  "营业状态"
+  status: Int!
+  "省份"
+  province: String!
+  "城市"
+  city: String!
+  "区县"
+  district: String!
+}
+
+"""
+酒店高级信息
+"""
+type HigherHotelInfo {
+  "id"
+  id: Int!
+  "酒店类型id"
+  hotelType: Int!
+  "最近装修时间"
+  renovationTime: Float!
+  "酒店简介"
+  introduction: String!
+  "押金"
+  deposit: Int!
+  "最早入住时间"
+  startTime: String!
+  "最晚入住时间"
+  endTime: String!
+  "最晚离店时间"
+  checkoutTime: String!
+  "最晚取消时间"
+  cancelTime: String!
+  "周末时间"
+  weekend: [Int!]!
+  "审核状态"
+  auditState: Int!
+  "审核建议"
+  suggestion: String
+}
+
+"""
+酒店高级信息输入
+"""
+input HigherHotelInfoInput {
+  "id"
+  id: Int!
+  "酒店类型id"
+  hotelType: Int!
+  "最近装修时间"
+  renovationTime: Float!
+  "酒店简介"
+  introduction: String!
+  "押金"
+  deposit: Int!
+  "最早入住时间"
+  startTime: String!
+  "最晚入住时间"
+  endTime: String!
+  "最晚离店时间"
+  checkoutTime: String!
+  "最晚取消时间"
+  cancelTime: String!
+  "周末时间"
+  weekend: [Int!]!
+}

@@ -1,0 +1,19 @@
+"""
+员工信息
+"""
+type Staff {
+  "酒店员工id"
+  id: Int!
+  "酒店id（为0时为系统员工）"
+  hotelId: Int!
+  "酒店信息（系统员工该字段为空）"
+  hotel: StaffHotel
+  "姓名"
+  username: String!
+  "头像"
+  avatar: String!
+  "状态"
+  status: Int!
+  "注册时间"
+  createdTime: Float
+}

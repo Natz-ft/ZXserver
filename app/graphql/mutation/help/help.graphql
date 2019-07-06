@@ -1,0 +1,26 @@
+type Mutation {
+  """
+  新增帮助信息（系统员工）
+  """
+  addHelp (
+    "帮助位置"
+    index: Int!
+    "问"
+    question: String!
+    "答"
+    answer: String!
+  ): HelpDetail!
+  """
+  修改帮助信息（系统员工）
+  """
+  updateHelp (
+    "id"
+    id: Int!
+    "帮助位置"
+    index: Int!
+    "问"
+    question: String!
+    "答"
+    answer: String!
+  ): HelpDetail!
+}

@@ -1,0 +1,37 @@
+type Query {
+  """
+  根据员工获取酒店信息=>酒店信息（酒店员工）
+  """
+  hotelByStaffId (
+    "员工id"
+    staffId: Int!
+  ): StaffHotel!
+  """
+  获取酒店资质=>酒店营业执照信息（酒店员工，系统员工）
+  """
+  hotelLicense (
+    "酒店id"
+    id: Int!
+  ): License
+  """
+  获取酒店信息=>酒店信息（酒店员工，系统员工）
+  """
+  staffHotel (
+    "酒店id"
+    id: Int!
+  ): StaffHotel!
+  """
+  获取酒店基础信息（酒店员工）
+  """
+  baseHotelInfo (
+    "酒店id"
+    id: Int!
+  ): BaseHotelInfo!
+  """
+  获取酒店高级信息（酒店员工）
+  """
+  higherHotelInfo (
+    "酒店id"
+    id: Int!
+  ): HigherHotelInfo!
+}

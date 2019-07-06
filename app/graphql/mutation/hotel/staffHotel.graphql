@@ -1,0 +1,45 @@
+type Mutation {
+  """
+  提交新的营业执照=>成功与否（酒店员工）
+  """
+  submitLicense (
+    "酒店id"
+    id: Int!
+    "注册资本"
+    capital: String!
+    "社会信用代码"
+    code: String!
+    "单位名称"
+    name: String!
+    "法人"
+    person: String!
+    "注册号"
+    number: String!
+    "组成形式"
+    form: String!
+    "成立日期"
+    establishment: String!
+    "地址"
+    address: String!
+    "类型"
+    type: String!
+    "有效期"
+    validity: String!
+    "图片链接"
+    image: String!
+  ): Boolean!
+  """
+  提交新的酒店基础信息=>成功与否（酒店员工）
+  """
+  submitBaseHotelInfo (
+    "基础信息"
+     baseHotelInfo: BaseHotelInfoInput!
+  ): Boolean!
+  """
+  提交新的酒店高级信息=>成功与否（酒店员工）
+  """
+  submitHigherHotelInfo (
+    "高级信息"
+    higherHotelInfo: HigherHotelInfoInput!
+  ): Boolean!
+}

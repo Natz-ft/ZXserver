@@ -1,0 +1,10 @@
+type roomTypeStatisc {
+    id: Int!,
+    number: Int!,
+    name: String!
+}
+
+type orderStatisc {
+    roomType: RoomType!,
+    orders: [Order!]!
+}

@@ -1,0 +1,29 @@
+"""
+用户接口
+"""
+interface User {
+  "用户id"
+  id: Int!
+}
+
+"""
+带名字的用户
+"""
+type Username implements User {
+  "用户id"
+  id: Int!
+  "用户名"
+  name: String!
+}
+
+"""
+带年龄的用户
+"""
+type UserAge implements User {
+  "用户id"
+  id: Int!
+  "用户名"
+  name: String!
+  "年龄"
+  age: Int!
+}

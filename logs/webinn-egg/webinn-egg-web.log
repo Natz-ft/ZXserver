@@ -1,0 +1,55 @@
+2019-04-28 17:53:48,890 ERROR 17456 [-/127.0.0.1/-/0ms GET /] nodejs.ER_DBACCESS_DENIED_ERRORError: ER_DBACCESS_DENIED_ERROR: Access denied for user 'test'@'%' to database 'test'
+    at Handshake.Sequence._packetToError (C:\dev\react_projects\egg\node_modules\mysql\lib\protocol\sequences\Sequence.js:47:14)
+    at Handshake.ErrorPacket (C:\dev\react_projects\egg\node_modules\mysql\lib\protocol\sequences\Handshake.js:124:18)
+    at Protocol._parsePacket (C:\dev\react_projects\egg\node_modules\mysql\lib\protocol\Protocol.js:278:23)
+    at Parser.write (C:\dev\react_projects\egg\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (C:\dev\react_projects\egg\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+    at Socket.<anonymous> (C:\dev\react_projects\egg\node_modules\mysql\lib\Connection.js:91:28)
+    at Socket.<anonymous> (C:\dev\react_projects\egg\node_modules\mysql\lib\Connection.js:502:10)
+    at Socket.emit (events.js:182:13)
+    at addChunk (_stream_readable.js:283:12)
+    at readableAddChunk (_stream_readable.js:264:11)
+    at Socket.Readable.push (_stream_readable.js:219:10)
+    at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+    --------------------
+    at Protocol._enqueue (C:\dev\react_projects\egg\node_modules\mysql\lib\protocol\Protocol.js:144:48)
+    at Protocol.handshake (C:\dev\react_projects\egg\node_modules\mysql\lib\protocol\Protocol.js:51:23)
+    at PoolConnection.connect (C:\dev\react_projects\egg\node_modules\mysql\lib\Connection.js:118:18)
+    at Pool.getConnection (C:\dev\react_projects\egg\node_modules\mysql\lib\Pool.js:48:16)
+    at C:\dev\react_projects\egg\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (C:\dev\react_projects\egg\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (C:\dev\react_projects\egg\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at Pool.query (C:\dev\react_projects\egg\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\dev\react_projects\egg\node_modules\ali-rds\node_modules\pify\index.js:29:7
+    at new Promise (<anonymous>)
+    at Pool.<anonymous> (C:\dev\react_projects\egg\node_modules\ali-rds\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\dev\react_projects\egg\node_modules\ali-rds\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\dev\react_projects\egg\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\dev\react_projects\egg\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    at onFulfilled (C:\dev\react_projects\egg\node_modules\co\index.js:65:19)
+    at C:\dev\react_projects\egg\node_modules\co\index.js:54:5
+    at new Promise (<anonymous>)
+    at RDSClient.co (C:\dev\react_projects\egg\node_modules\co\index.js:50:10)
+    at RDSClient.createPromise [as query] (C:\dev\react_projects\egg\node_modules\co\index.js:30:15)
+    at C:\dev\react_projects\egg\node_modules\egg-mysql\lib\mysql.js:21:31
+    at Generator.next (<anonymous>)
+    at onFulfilled (C:\dev\react_projects\egg\node_modules\co\index.js:65:19)
+    at C:\dev\react_projects\egg\node_modules\co\index.js:54:5
+    at new Promise (<anonymous>)
+    at co (C:\dev\react_projects\egg\node_modules\co\index.js:50:10)
+    at createPromise (C:\dev\react_projects\egg\node_modules\co\index.js:30:15)
+    at Object.callFn (C:\dev\react_projects\egg\node_modules\egg-core\lib\utils\index.js:44:42)
+    at process.nextTick (C:\dev\react_projects\egg\node_modules\egg-core\lib\lifecycle.js:248:13)
+    at process._tickCallback (internal/process/next_tick.js:61:11)
+    sql: select now() as currentTime;
+code: "ER_DBACCESS_DENIED_ERROR"
+errno: 1044
+sqlMessage: "Access denied for user 'test'@'%' to database 'test'"
+sqlState: "42000"
+fatal: true
+name: "ER_DBACCESS_DENIED_ERRORError"
+pid: 17456
+hostname: LAPTOP-FPBDE1D0
+

@@ -1,0 +1,4 @@
+type Query {
+    roomTypeStatisc(hotelId:Int!):[roomTypeStatisc!]!,
+    orderStatisc(hotelId:Int!, startTime:Float!, endTime: Float!):[orderStatisc!]!
+}

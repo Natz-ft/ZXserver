@@ -1,0 +1,15 @@
+type Mutation {
+  """
+  发起事务=>成功与否（会员）
+  """
+  startAffair (
+    "订单房间id"
+    orderRoomId: Int!
+    "类型"
+    type: Int!
+    "期望处理时间"
+    expectTime: Float!
+    "内容"
+    content: String!
+  ): Boolean!
+}

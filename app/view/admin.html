@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Graphiql登录</title>
+    <link rel="stylesheet" href="../public/index.css">
+</head>
+<body>
+<div class="panel-lite">
+    <div class="thumbur">
+        <div class="icon-lock"></div>
+    </div>
+    <h4>用户登录</h4>
+    <div class="form-group">
+        <input required="required" class="form-control" id="user"/>
+        <label class="form-label">用户名 </label>
+    </div>
+    <div class="form-group">
+        <input type="password" required="required" class="form-control" id="pwd"/>
+        <label class="form-label">密　码</label>
+        <button class="login" id="login">登录</button>
+    </div>
+</div>
+</body>
+<script>
+  const user = document.getElementById('user');
+  const pwd = document.getElementById('pwd');
+  document.getElementById('login').addEventListener('click',()=>{
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if (xhr.status >= 200 && xhr.status < 400) {
+        location.href = '/graphql';
+      }
+    };
+    xhr.open('post', '/login', true);
+    xhr.setRequestHeader('Content-Type','application/json');
+    xhr.send(JSON.stringify({
+      username: user.value,
+      password: pwd.value
+    }))
+  })
+</script>
+</html>

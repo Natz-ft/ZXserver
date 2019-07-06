@@ -1,0 +1,75 @@
+"""
+评论数
+"""
+type CommentCount {
+  "总数"
+  total: Int!
+  "好评"
+  good: Int!
+  "中评"
+  middle: Int!
+  "差评"
+  bad: Int!
+}
+
+"""
+评论列表
+"""
+type CommentList {
+  "总数"
+  total: Int!
+  "评论列表"
+  comments: [Comment!]!
+}
+
+"""
+评论类
+"""
+type Comment {
+  "评论id"
+  id: Int!
+  "评分"
+  rate: Int!
+  "服务评分"
+  serviceRate: Int!
+  "卫生评分"
+  hygieneRate: Int!
+  "位置评分"
+  positionRate: Int!
+  "设备评分"
+  deviceRate: Int!
+  "评价"
+  content: String!
+  "浏览次数"
+  viewCount: Int!
+  "状态"
+  status: Int!
+  "评论时间"
+  createdTime: Float!
+  "审核建议"
+  suggestion: String
+  "点赞数"
+  likeCount: Int!
+  "回复"
+  reply: Reply
+  "会员"
+  member: CommentMember!
+  "订单信息"
+  order: CommentOrder!
+}
+
+"""
+评论回复
+"""
+type Reply {
+  "回复id"
+  id: Int!
+  "评论id"
+  commentId: Int!
+  "回复内容"
+  content: String!
+  "最后修改时间"
+  updatedTime: Float!
+  "回复时间"
+  createdTime: Float!
+}

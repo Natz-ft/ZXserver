@@ -1,0 +1,9 @@
+type Mutation {
+  """
+  单文件上传=>文件（仅会员可上传文件）
+  """
+  singleUpload (
+    "文件"
+    file: Upload!
+  ): File!
+}

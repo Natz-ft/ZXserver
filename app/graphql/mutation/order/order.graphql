@@ -1,0 +1,92 @@
+type Mutation {
+  """
+  下单接口=>订单信息（会员）
+  """
+  order (
+    "会员来源"
+    memberSource: Int!
+    "预定人"
+    orderMemberId: Int!
+    "联系人姓名"
+    contact: String!
+    "会员优惠券id"
+    memberCouponId: Int
+    "房型id"
+    roomTypeId: Int!
+    "房间数"
+    roomCount: Int!
+    "入住时间"
+    startTime: Float!
+    "离店时间"
+    endTime: Float!
+    "酒店最晚取消时间"
+    hotelCancelTime: String!
+    "订单价格数组"
+    orderPrices: [OrderPriceInput!]!
+    "押金"
+    deposit: Int!
+    "总价（减去优惠券）"
+    totalMoney: Int!
+    "总价"
+    realTotalMoney: Int!
+    "联系人电话"
+    phone: String!
+  ): Order!
+  """
+  取消订单=>成功与否（会员（订单人，权限人））
+  """
+  cancelOrder (
+    "订单id"
+    id: Int!
+    "会员id"
+    memberId: Int!
+  ): Boolean!
+  """
+  退房=>订单（会员（订单人，权限人））
+  """
+  checkout (
+    "订单房间id"
+    orderRoomIds: [Int!]!
+  ): Order!
+  """
+  续房=>订单（会员（订单人，权限人））
+  """
+  stay (
+    "订单id"
+    id: Int!
+    "续订人"
+    orderMemberId: Int!
+    "会员优惠券id"
+    memberCouponId: Int
+    "房间数"
+    roomCount: Int!
+    "离店时间"
+    endTime: Float!
+    "订单价格数组"
+    orderPrices: [OrderPriceInput!]!
+    "总价（减去优惠券）"
+    totalMoney: Int!
+    "总价"
+    realTotalMoney: Int!
+    "继承房间数组"
+    inheritRooms: [Int!]!
+    "预填入住人"
+    rooms: [StayCheckInMenRoom!]!
+  ): Order!
+  """
+  确定入住人=>成功与否（会员（订单人，权限人））
+  """
+  confirmCheckInMen (
+    "订单id"
+    id: Int!
+    "预填入住人"
+    rooms: [CheckInMenRoom!]!
+  ): Boolean!
+  """
+  会员开锁=>成功与否（会员）
+  """
+  memberOpenLock (
+    "订单房间id"
+    orderRoomId: Int!
+  ): Boolean!
+}

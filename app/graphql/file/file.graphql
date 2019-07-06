@@ -1,0 +1,13 @@
+"""
+文件
+"""
+type File {
+  "文件id"
+  id: ID!
+  "路径"
+  path: String!
+  "文件名"
+  filename: String!
+  "类型"
+  mimetype: String!
+}

@@ -1,0 +1,834 @@
+{
+  "config": {
+    "session": {
+      "maxAge": 86400000,
+      "key": "EGG_SESS",
+      "httpOnly": true,
+      "encrypt": true,
+      "overwrite": true,
+      "signed": true,
+      "autoCommit": true,
+      "encode": "<Function encode>",
+      "decode": "<Function decode>",
+      "genid": "<Function anonymous>"
+    },
+    "security": {
+      "domainWhiteList": [
+        "*"
+      ],
+      "protocolWhiteList": [],
+      "defaultMiddleware": "csrf,hsts,methodnoallow,noopen,nosniff,csp,xssProtection,xframe,dta",
+      "csrf": {
+        "enable": false,
+        "useSession": false,
+        "ignoreJSON": false,
+        "cookieName": "csrfToken",
+        "sessionName": "csrfToken",
+        "headerName": "x-csrf-token",
+        "bodyName": "_csrf",
+        "queryName": "_csrf",
+        "ignoreJson": true,
+        "ignore": "<Function ignore>"
+      },
+      "xframe": {
+        "enable": true,
+        "value": "SAMEORIGIN",
+        "matching": "<Function anonymous>"
+      },
+      "hsts": {
+        "enable": false,
+        "maxAge": 31536000,
+        "includeSubdomains": false
+      },
+      "dta": {
+        "enable": true,
+        "matching": "<Function anonymous>"
+      },
+      "methodnoallow": {
+        "enable": true,
+        "matching": "<Function anonymous>"
+      },
+      "noopen": {
+        "enable": true,
+        "matching": "<Function anonymous>"
+      },
+      "nosniff": {
+        "enable": true,
+        "matching": "<Function anonymous>"
+      },
+      "referrerPolicy": {
+        "enable": false,
+        "value": "no-referrer-when-downgrade"
+      },
+      "xssProtection": {
+        "enable": true,
+        "value": "1; mode=block",
+        "matching": "<Function anonymous>"
+      },
+      "csp": {
+        "enable": false,
+        "policy": {}
+      },
+      "ssrf": {
+        "ipBlackList": null,
+        "checkAddress": null
+      },
+      "_protocolWhiteListSet": "<Set>"
+    },
+    "helper": {
+      "shtml": {}
+    },
+    "jsonp": {
+      "limit": 50,
+      "callback": [
+        "_callback",
+        "callback"
+      ],
+      "csrf": false
+    },
+    "onerror": {
+      "errorPageUrl": "",
+      "appErrorFilter": null,
+      "templatePath": "C:\\dev\\react_projects\\egg\\node_modules\\egg-onerror\\lib\\onerror_page.mustache"
+    },
+    "i18n": {
+      "defaultLocale": "en_US",
+      "dirs": [
+        "C:\\dev\\react_projects\\egg\\node_modules\\egg-session\\config\\locales",
+        "C:\\dev\\react_projects\\egg\\node_modules\\egg-security\\config\\locales",
+        "C:\\dev\\react_projects\\egg\\node_modules\\egg-jsonp\\config\\locales",
+        "C:\\dev\\react_projects\\egg\\node_modules\\egg-onerror\\config\\locales",
+        "C:\\dev\\react_projects\\egg\\node_modules\\egg-i18n\\config\\locales",
+        "C:\\dev\\react_projects\\egg\\node_modules\\egg-watcher\\config\\locales",
+        "C:\\dev\\react_projects\\egg\\node_modules\\egg-schedule\\config\\locales",
+        "C:\\dev\\react_projects\\egg\\node_modules\\egg-multipart\\config\\locales",
+        "C:\\dev\\react_projects\\egg\\node_modules\\egg-development\\config\\locales",
+        "C:\\dev\\react_projects\\egg\\node_modules\\egg-logrotator\\config\\locales",
+        "C:\\dev\\react_projects\\egg\\node_modules\\egg-static\\config\\locales",
+        "C:\\dev\\react_projects\\egg\\node_modules\\egg-view\\config\\locales",
+        "C:\\dev\\react_projects\\egg\\node_modules\\egg-cors\\config\\locales",
+        "C:\\dev\\react_projects\\egg\\node_modules\\egg-mysql\\config\\locales",
+        "C:\\dev\\react_projects\\egg\\node_modules\\egg-graphql\\config\\locales",
+        "C:\\dev\\react_projects\\egg\\node_modules\\egg-redis\\config\\locales",
+        "C:\\dev\\react_projects\\egg\\node_modules\\egg-alinode\\config\\locales",
+        "C:\\dev\\react_projects\\egg\\node_modules\\egg-view-ejs\\config\\locales",
+        "C:\\dev\\react_projects\\egg\\node_modules\\egg-socket.io\\config\\locales",
+        "C:\\dev\\react_projects\\egg\\node_modules\\egg-oss\\config\\locales",
+        "C:\\dev\\react_projects\\egg\\node_modules\\egg\\config\\locales",
+        "C:\\dev\\react_projects\\egg\\config\\locales"
+      ],
+      "queryField": "locale",
+      "cookieField": "locale",
+      "cookieMaxAge": "1y",
+      "functionName": "__"
+    },
+    "watcher": {
+      "type": "development",
+      "eventSources": {
+        "default": "C:\\dev\\react_projects\\egg\\node_modules\\egg-watcher\\lib\\event-sources\\default",
+        "development": "C:\\dev\\react_projects\\egg\\node_modules\\egg-watcher\\lib\\event-sources\\development"
+      }
+    },
+    "customLogger": {
+      "scheduleLogger": {
+        "consoleLevel": "NONE",
+        "file": "C:\\dev\\react_projects\\egg\\logs\\webinn-egg\\egg-schedule.log"
+      }
+    },
+    "schedule": {
+      "directory": []
+    },
+    "multipart": {
+      "mode": "file",
+      "autoFields": false,
+      "defaultCharset": "utf8",
+      "fieldNameSize": 100,
+      "fieldSize": 102400,
+      "fields": 10,
+      "fileSize": 104857600,
+      "files": 10,
+      "fileExtensions": [],
+      "whitelist": null,
+      "tmpdir": "C:\\Users\\yangkai.sun\\AppData\\Local\\Temp\\egg-multipart-tmp\\webinn-egg",
+      "cleanSchedule": {
+        "cron": "0 30 4 * * *"
+      }
+    },
+    "development": {
+      "watchDirs": [],
+      "ignoreDirs": [],
+      "fastReady": false,
+      "reloadOnDebug": true,
+      "overrideDefault": false
+    },
+    "logrotator": {
+      "filesRotateByHour": null,
+      "hourDelimiter": "-",
+      "filesRotateBySize": null,
+      "maxFileSize": 52428800,
+      "maxFiles": 10,
+      "rotateDuration": 60000,
+      "maxDays": 31
+    },
+    "static": {
+      "prefix": "/public/",
+      "dir": "C:\\dev\\react_projects\\egg\\app\\public",
+      "dynamic": true,
+      "preload": false,
+      "buffer": false,
+      "maxFiles": 1000
+    },
+    "view": {
+      "root": [
+        "C:\\dev\\react_projects\\egg\\app\\view"
+      ],
+      "cache": false,
+      "defaultExtension": ".html",
+      "defaultViewEngine": "",
+      "mapping": {
+        ".html": "ejs"
+      }
+    },
+    "cors": {
+      "origin": "*",
+      "allowMethods": "GET,HEAD,PUT,POST,DELETE,PATCH",
+      "exposeHeaders": "Token,token"
+    },
+    "mysql": {
+      "default": {
+        "database": null,
+        "connectionLimit": 5
+      },
+      "app": true,
+      "agent": false,
+      "client": {
+        "host": "127.0.0.1",
+        "port": "3306",
+        "user": "root",
+        "password": "<String len: 6>",
+        "database": "hotel"
+      }
+    },
+    "graphql": {
+      "router": "/graphql",
+      "graphiql": true,
+      "onPreGraphiQL": "<AsyncFunction onPreGraphiQL>"
+    },
+    "redis": {
+      "default": {},
+      "app": true,
+      "agent": false,
+      "supportTimeCommand": true,
+      "clients": {
+        "db0": {
+          "port": 6379,
+          "host": "47.106.111.245",
+          "password": "<String len: 6>",
+          "db": 0
+        },
+        "db1": {
+          "port": 6379,
+          "host": "47.106.111.245",
+          "password": "<String len: 6>",
+          "db": 1
+        },
+        "db14": {
+          "port": 6379,
+          "host": "47.106.111.245",
+          "password": "<String len: 6>",
+          "db": 14
+        },
+        "db15": {
+          "port": 6379,
+          "host": "47.106.111.245",
+          "password": "<String len: 6>",
+          "db": 15
+        },
+        "subscribe": {
+          "port": 6379,
+          "host": "47.106.111.245",
+          "password": "<String len: 6>",
+          "db": 15
+        }
+      }
+    },
+    "alinode": {
+      "enable": true,
+      "server": "wss://agentserver.node.aliyun.com:8080",
+      "appid": "77565",
+      "secret": "<String len: 40>",
+      "cmddir": "C:\\dev\\react_projects\\egg\\node_modules\\commandx",
+      "logdir": "C:\\dev\\react_projects\\egg\\logs\\alinode",
+      "error_log": [
+        "C:\\dev\\react_projects\\egg\\logs\\webinn-egg\\common-error.log",
+        "C:\\dev\\react_projects\\egg\\logs\\stderr.log"
+      ],
+      "packages": [
+        "C:\\dev\\react_projects\\egg\\package.json"
+      ],
+      "reconnectDelay": 10,
+      "heartbeatInterval": 60,
+      "reportInterval": 60
+    },
+    "ejs": {
+      "root": "C:\\dev\\react_projects\\egg\\app\\view",
+      "cache": false,
+      "debug": false,
+      "compileDebug": true,
+      "delimiter": null,
+      "strict": false
+    },
+    "io": {
+      "init": {
+        "path": "/socket.io",
+        "allowRequest": "<Function bound >"
+      },
+      "namespace": {
+        "/": {
+          "connectionMiddleware": [],
+          "packetMiddleware": []
+        },
+        "/sweeper": {
+          "connectionMiddleware": [
+            "auth",
+            "connection"
+          ],
+          "packetMiddleware": []
+        },
+        "/hotel": {
+          "connectionMiddleware": [
+            "auth",
+            "connection"
+          ],
+          "packetMiddleware": []
+        }
+      },
+      "redis": {
+        "host": "47.106.111.245",
+        "port": "6379",
+        "auth_pass": "113911",
+        "db": 14
+      }
+    },
+    "oss": {
+      "default": {
+        "timeout": "60s"
+      },
+      "useAgent": true,
+      "client": {
+        "accessKeyId": "LTAIsRFowPGfMLvv",
+        "accessKeySecret": "<String len: 30>",
+        "bucket": "webinn",
+        "endpoint": "oss-cn-beijing.aliyuncs.com",
+        "timeout": "60s",
+        "maxSockets": 50
+      }
+    },
+    "env": "local",
+    "name": "webinn-egg",
+    "keys": "<String len: 29>",
+    "proxy": false,
+    "protocolHeaders": "x-forwarded-proto",
+    "ipHeaders": "x-forwarded-for",
+    "hostHeaders": "",
+    "pkg": {
+      "name": "webinn-egg",
+      "version": "1.0.0",
+      "description": "",
+      "private": true,
+      "dependencies": {
+        "apollo-server-koa": "^2.3.1",
+        "body-parser": "^1.18.3",
+        "crypto": "^1.0.1",
+        "dataloader": "^1.4.0",
+        "dayjs": "^1.7.8",
+        "dist-exiftool": "^10.53.0",
+        "egg": "^2.14.2",
+        "egg-alinode": "^2.0.1",
+        "egg-cors": "^2.1.2",
+        "egg-graphql": "^2.3.0",
+        "egg-jwt": "^3.1.4",
+        "egg-mysql": "^3.0.0",
+        "egg-oss": "^2.0.0",
+        "egg-redis": "^2.3.0",
+        "egg-scripts": "^2.11.0",
+        "egg-socket.io": "^4.1.5",
+        "egg-view-ejs": "^2.0.0",
+        "fstream": "^1.0.11",
+        "jsonwebtoken": "^8.4.0",
+        "lodash": "^4.17.11",
+        "md5": "^2.2.1",
+        "merge-graphql-schemas": "^1.5.8",
+        "node-exiftool": "^2.3.0",
+        "querystring": "^0.2.0",
+        "request": "^2.88.0",
+        "request-promise": "^4.2.2",
+        "sha1": "^1.1.1",
+        "stream-wormhole": "^1.1.0",
+        "unzip": "^0.1.11",
+        "xml2js": "^0.4.19"
+      },
+      "devDependencies": {
+        "autod": "^3.0.1",
+        "autod-egg": "^1.1.0",
+        "egg-bin": "^4.10.0",
+        "egg-ci": "^1.11.0",
+        "egg-mock": "^3.21.0",
+        "eslint": "^5.12.0",
+        "eslint-config-egg": "^7.1.0",
+        "webstorm-disable-index": "^1.2.0"
+      },
+      "engines": {
+        "node": ">=8.9.0"
+      },
+      "scripts": {
+        "start": "egg-scripts start --sticky --daemon --title=egg-server-webinn-egg",
+        "stop": "egg-scripts stop --title=egg-server-webinn-egg",
+        "dev": "egg-bin dev --sticky",
+        "debug": "egg-bin debug",
+        "test": "npm run lint -- --fix && npm run test-local",
+        "test-local": "egg-bin test",
+        "cov": "egg-bin cov",
+        "lint": "eslint .",
+        "ci": "npm run lint && npm run cov",
+        "autod": "autod"
+      },
+      "ci": {
+        "version": "8"
+      },
+      "repository": {
+        "type": "git",
+        "url": ""
+      },
+      "author": "",
+      "license": "MIT"
+    },
+    "baseDir": "C:\\dev\\react_projects\\egg",
+    "HOME": "C:\\Users\\yangkai.sun",
+    "rundir": "C:\\dev\\react_projects\\egg\\run",
+    "dump": {
+      "ignore": "<Set>"
+    },
+    "confusedConfigurations": {
+      "bodyparser": "bodyParser",
+      "notFound": "notfound",
+      "sitefile": "siteFile",
+      "middlewares": "middleware",
+      "httpClient": "httpclient"
+    },
+    "notfound": {
+      "pageUrl": ""
+    },
+    "siteFile": {
+      "/favicon.ico": "<Buffer len: 6463>"
+    },
+    "bodyParser": {
+      "enable": true,
+      "encoding": "utf8",
+      "formLimit": "100kb",
+      "jsonLimit": "10mb",
+      "strict": true,
+      "queryString": {
+        "arrayLimit": 100,
+        "depth": 5,
+        "parameterLimit": 1000
+      },
+      "returnRawBody": true
+    },
+    "logger": {
+      "dir": "C:\\dev\\react_projects\\egg\\logs\\webinn-egg",
+      "encoding": "utf8",
+      "env": "local",
+      "level": "DEBUG",
+      "consoleLevel": "DEBUG",
+      "disableConsoleAfterReady": false,
+      "outputJSON": false,
+      "buffer": true,
+      "appLogName": "webinn-egg-web.log",
+      "coreLogName": "egg-web.log",
+      "agentLogName": "egg-agent.log",
+      "errorLogName": "common-error.log",
+      "coreLogger": {
+        "consoleLevel": "WARN"
+      },
+      "allowDebugAtProd": false,
+      "type": "application"
+    },
+    "httpclient": {
+      "enableDNSCache": false,
+      "dnsCacheLookupInterval": 10000,
+      "dnsCacheMaxLength": 1000,
+      "request": {
+        "timeout": 5000
+      },
+      "httpAgent": {
+        "keepAlive": true,
+        "freeSocketTimeout": 4000,
+        "maxSockets": 9007199254740991,
+        "maxFreeSockets": 256,
+        "timeout": 30000,
+        "socketActiveTTL": 0
+      },
+      "httpsAgent": {
+        "keepAlive": true,
+        "freeSocketTimeout": 4000,
+        "maxSockets": 9007199254740991,
+        "maxFreeSockets": 256,
+        "timeout": 30000,
+        "socketActiveTTL": 0
+      }
+    },
+    "meta": {
+      "enable": true,
+      "logging": false
+    },
+    "coreMiddleware": [
+      "cors",
+      "meta",
+      "siteFile",
+      "notfound",
+      "static",
+      "bodyParser",
+      "overrideMethod",
+      "session",
+      "securities",
+      "i18n",
+      "multipart",
+      "eggLoaderTrace"
+    ],
+    "workerStartTimeout": 600000,
+    "serverTimeout": null,
+    "cluster": {
+      "listen": {
+        "path": "",
+        "port": 7001,
+        "hostname": ""
+      }
+    },
+    "clusterClient": {
+      "maxWaitTime": 60000,
+      "responseTimeout": 60000
+    },
+    "onClientError": null,
+    "middleware": [
+      "robot",
+      "auth",
+      "graphql"
+    ],
+    "url": {
+      "URL": "https://api2.zzzz1997.com",
+      "PATH": "https://res2.webinn.online"
+    },
+    "aes": {
+      "key": "e5250e89ad1bb0ca",
+      "iv": "1fc8ce95d10f409b"
+    },
+    "robot": {
+      "ua": [
+        {}
+      ]
+    },
+    "auth": {
+      "secret": "<String len: 18>",
+      "timeout": 28800000,
+      "ignore": []
+    },
+    "wechat": {
+      "appid": "wxafef299c20b947a6",
+      "secret": "<String len: 32>",
+      "mch_id": "1503420871",
+      "key": "webinnpay3r3ejrlfjkjvdsxhfidsh22",
+      "trade_type": "JSAPI",
+      "unified_notify_url": "https://api2.zzzz1997.com/wechat/payActionUnified",
+      "refund_notify_url": "https://api2.zzzz1997.com/wechat/payActionRefund",
+      "signType": "MD5",
+      "template": {
+        "orderSuccess": "8IspxFE9ruf0RrYdaq3tYZ49wYrPwthP1zxsiDBzDQQ",
+        "orderFail": "biq6y6hB8V_GdPRLoPQszpJpxyCHXpiI0uJjRtjWmdE",
+        "cancelOrder": "GLOWbbH4UORh5EiMoD4SHTCnBGdIqW8bqPqf5yQmvRM",
+        "refundNotify": "5FJg093--8JbWHd06Uz3ezWCspogE9V_3BAvNaD9HPI"
+      },
+      "fee": 1
+    },
+    "sms": {
+      "resendTime": 60000,
+      "invalidTime": 600000,
+      "tplId": "124802",
+      "appKey": "cd0a75707517afbe797ed597265e1dce"
+    },
+    "baidu": {
+      "apiKey": "pYHbqkcFrMvjCpVAYCFkmTGb",
+      "secret": "<String len: 32>"
+    },
+    "amap": {
+      "key": "19f55acd8aa5d4e958606492691bdd16"
+    },
+    "guojia": {
+      "version": "1.0",
+      "s_id": "333333",
+      "account": "17760010551",
+      "password": "<String len: 32>",
+      "s_id2": "c909fb8a-2866-4e66-a95b-a2326ba2b5c",
+      "pwd_user_mobile": "13980835783",
+      "pwd_user_name": "wei4553535"
+    },
+    "timing": {
+      "delayNumber": 60
+    },
+    "coreMiddlewares": "~config~coreMiddleware",
+    "appMiddlewares": "~config~middleware",
+    "appMiddleware": "~config~middleware",
+    "multipartParseOptions": {
+      "autoFields": false,
+      "defCharset": "utf8",
+      "limits": {
+        "fieldNameSize": 100,
+        "fieldSize": 102400,
+        "fields": 10,
+        "fileSize": 104857600,
+        "files": 10
+      },
+      "checkFile": "<Function checkFile>"
+    }
+  },
+  "plugins": {
+    "session": {
+      "enable": true,
+      "package": "egg-session",
+      "name": "session",
+      "dependencies": [],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "C:\\dev\\react_projects\\egg\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\dev\\react_projects\\egg\\node_modules\\egg-session",
+      "version": "3.1.0"
+    },
+    "security": {
+      "enable": true,
+      "package": "egg-security",
+      "name": "security",
+      "dependencies": [],
+      "optionalDependencies": [
+        "session"
+      ],
+      "env": [],
+      "from": "C:\\dev\\react_projects\\egg\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\dev\\react_projects\\egg\\node_modules\\egg-security",
+      "version": "2.5.0"
+    },
+    "jsonp": {
+      "enable": true,
+      "package": "egg-jsonp",
+      "name": "jsonp",
+      "dependencies": [],
+      "optionalDependencies": [
+        "security"
+      ],
+      "env": [],
+      "from": "C:\\dev\\react_projects\\egg\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\dev\\react_projects\\egg\\node_modules\\egg-jsonp",
+      "version": "2.0.0"
+    },
+    "onerror": {
+      "enable": true,
+      "package": "egg-onerror",
+      "name": "onerror",
+      "dependencies": [],
+      "optionalDependencies": [
+        "jsonp"
+      ],
+      "env": [],
+      "from": "C:\\dev\\react_projects\\egg\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\dev\\react_projects\\egg\\node_modules\\egg-onerror",
+      "version": "2.1.0"
+    },
+    "i18n": {
+      "enable": true,
+      "package": "egg-i18n",
+      "name": "i18n",
+      "dependencies": [],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "C:\\dev\\react_projects\\egg\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\dev\\react_projects\\egg\\node_modules\\egg-i18n",
+      "version": "2.0.0"
+    },
+    "watcher": {
+      "enable": true,
+      "package": "egg-watcher",
+      "name": "watcher",
+      "dependencies": [],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "C:\\dev\\react_projects\\egg\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\dev\\react_projects\\egg\\node_modules\\egg-watcher",
+      "version": "3.1.0"
+    },
+    "schedule": {
+      "enable": true,
+      "package": "egg-schedule",
+      "name": "schedule",
+      "dependencies": [],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "C:\\dev\\react_projects\\egg\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\dev\\react_projects\\egg\\node_modules\\egg-schedule",
+      "version": "3.6.0"
+    },
+    "multipart": {
+      "enable": true,
+      "package": "egg-multipart",
+      "name": "multipart",
+      "dependencies": [],
+      "optionalDependencies": [
+        "schedule"
+      ],
+      "env": [],
+      "from": "C:\\dev\\react_projects\\egg\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\dev\\react_projects\\egg\\node_modules\\egg-multipart",
+      "version": "2.4.0"
+    },
+    "development": {
+      "enable": true,
+      "package": "egg-development",
+      "name": "development",
+      "dependencies": [
+        "watcher"
+      ],
+      "optionalDependencies": [],
+      "env": [
+        "local"
+      ],
+      "from": "C:\\dev\\react_projects\\egg\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\dev\\react_projects\\egg\\node_modules\\egg-development",
+      "version": "2.4.2"
+    },
+    "logrotator": {
+      "enable": true,
+      "package": "egg-logrotator",
+      "name": "logrotator",
+      "dependencies": [
+        "schedule"
+      ],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "C:\\dev\\react_projects\\egg\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\dev\\react_projects\\egg\\node_modules\\egg-logrotator",
+      "version": "3.0.7"
+    },
+    "static": {
+      "enable": true,
+      "package": "egg-static",
+      "name": "static",
+      "dependencies": [],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "C:\\dev\\react_projects\\egg\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\dev\\react_projects\\egg\\node_modules\\egg-static",
+      "version": "2.2.0"
+    },
+    "view": {
+      "enable": true,
+      "package": "egg-view",
+      "name": "view",
+      "dependencies": [],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "C:\\dev\\react_projects\\egg\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\dev\\react_projects\\egg\\node_modules\\egg-view",
+      "version": "2.1.2"
+    },
+    "cors": {
+      "enable": true,
+      "package": "egg-cors",
+      "name": "cors",
+      "dependencies": [],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "C:\\dev\\react_projects\\egg\\config\\plugin.js",
+      "path": "C:\\dev\\react_projects\\egg\\node_modules\\egg-cors",
+      "version": "2.2.0"
+    },
+    "mysql": {
+      "enable": true,
+      "package": "egg-mysql",
+      "name": "mysql",
+      "dependencies": [],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "C:\\dev\\react_projects\\egg\\config\\plugin.js",
+      "path": "C:\\dev\\react_projects\\egg\\node_modules\\egg-mysql",
+      "version": "3.0.0"
+    },
+    "graphql": {
+      "enable": true,
+      "package": "egg-graphql",
+      "name": "graphql",
+      "dependencies": [],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "C:\\dev\\react_projects\\egg\\config\\plugin.js",
+      "path": "C:\\dev\\react_projects\\egg\\node_modules\\egg-graphql",
+      "version": "2.3.0"
+    },
+    "redis": {
+      "enable": true,
+      "package": "egg-redis",
+      "name": "redis",
+      "dependencies": [],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "C:\\dev\\react_projects\\egg\\config\\plugin.js",
+      "path": "C:\\dev\\react_projects\\egg\\node_modules\\egg-redis",
+      "version": "2.3.0"
+    },
+    "alinode": {
+      "enable": true,
+      "package": "egg-alinode",
+      "name": "alinode",
+      "dependencies": [],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "C:\\dev\\react_projects\\egg\\config\\plugin.js",
+      "path": "C:\\dev\\react_projects\\egg\\node_modules\\egg-alinode",
+      "version": "2.0.1"
+    },
+    "ejs": {
+      "enable": true,
+      "package": "egg-view-ejs",
+      "name": "ejs",
+      "dependencies": [
+        "view"
+      ],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "C:\\dev\\react_projects\\egg\\config\\plugin.js",
+      "path": "C:\\dev\\react_projects\\egg\\node_modules\\egg-view-ejs",
+      "version": "2.0.0"
+    },
+    "io": {
+      "enable": true,
+      "package": "egg-socket.io",
+      "name": "io",
+      "dependencies": [
+        "session"
+      ],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "C:\\dev\\react_projects\\egg\\config\\plugin.js",
+      "path": "C:\\dev\\react_projects\\egg\\node_modules\\egg-socket.io",
+      "version": "4.1.5"
+    },
+    "oss": {
+      "enable": true,
+      "package": "egg-oss",
+      "name": "oss",
+      "dependencies": [],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "C:\\dev\\react_projects\\egg\\config\\plugin.js",
+      "path": "C:\\dev\\react_projects\\egg\\node_modules\\egg-oss",
+      "version": "2.0.0"
+    }
+  }
+}

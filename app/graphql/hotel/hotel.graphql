@@ -1,0 +1,327 @@
+"""
+酒店星级
+"""
+type HotelStar {
+  "酒店星级id"
+  id: Int!
+  "等级"
+  level: Int!
+  "标签"
+  label: String!
+  "图标"
+  icon: String!
+}
+
+"""
+酒店类型
+"""
+type HotelType {
+  "id"
+  id: Int!
+  "代码"
+  code: String!
+  "简称"
+  abbreviation: String!
+  "描述"
+  description: String!
+}
+
+"""
+酒店信息
+"""
+type HotelInfo {
+  "酒店信息id"
+  id: Int!
+  "总评分"
+  rate: Int!
+  "服务评分"
+  serviceRate: Int!
+  "卫生评分"
+  hygieneRate: Int!
+  "位置评分"
+  positionRate: Int!
+  "设备评分"
+  deviceRate: Int!
+  "押金"
+  deposit: Int!
+  "最早入住时间"
+  startTime: String!
+  "最晚入住时间"
+  endTime: String!
+  "最晚离店时间"
+  checkoutTime: String!
+  "最晚取消时间"
+  cancelTime: String!
+  "周末时间"
+  weekend: [Int!]!
+  "钟点房最早入住时间"
+  hourlyStartTime: String!
+  "钟点房最晚入住时间"
+  hourlyEndTime: String!
+}
+
+"""
+酒店标签
+"""
+type HotelLabel {
+  "名称"
+  name: String!
+  "类型"
+  type: Int!
+}
+
+"""
+酒店图片
+"""
+type HotelImage {
+  "酒店图片id"
+  id: Int!
+  "链接"
+  url: String!
+  "描述"
+  description: String!
+}
+
+"""
+酒店电话
+"""
+type HotelLandLine {
+  "id"
+  id: Int!
+  "酒店id"
+  hotelId: Int!
+  "区号"
+  areaCode: String!
+  "号码"
+  number: String!
+  "分机号"
+  extensionNumber: String
+}
+
+"""
+酒店手机号
+"""
+type HotelPhone {
+  "id"
+  id: Int!
+  "酒店id"
+  hotelId: Int!
+  "手机号"
+  phone: String!
+}
+
+"""
+营业执照
+"""
+type License {
+  "id"
+  id: Int!
+  "酒店id"
+  hotelId: Int!
+  "注册资本"
+  capital: String!
+  "社会信用代码"
+  code: String!
+  "单位名称"
+  name: String!
+  "法人"
+  person: String!
+  "注册号"
+  number: String!
+  "组成形式"
+  form: String!
+  "成立日期"
+  establishment: String!
+  "地址"
+  address: String!
+  "类型"
+  type: String!
+  "有效期"
+  validity: String!
+  "图片链接"
+  image: String!
+  "最近更新时间"
+  updatedTime: Float!
+  "创建时间"
+  createdTime: Float!
+}
+
+"""
+订单酒店信息
+"""
+type OrderHotel {
+  "酒店id"
+  id: Int!
+  "酒店信息"
+  info: HotelInfo!
+  "酒店星级"
+  star: HotelStar!
+  "名字"
+  name: String!
+  "子名字"
+  subName: String!
+  "省份"
+  province: String!
+  "城市"
+  city: String!
+  "地区"
+  district: String!
+  "街道"
+  street: String!
+  "详细地址"
+  address: String!
+  "经度"
+  longitude: Float!
+  "纬度"
+  latitude: Float!
+  "介绍"
+  introduction: String!
+  "封面图片"
+  coverUrl: String!
+  "是否有智能锁"
+  hasSmartLock: Boolean!
+}
+
+"""
+用户相关酒店列表
+"""
+type MemberHotelList {
+  "总数"
+  total: Int!
+  "用户相关酒店列表"
+  hotels: [MemberHotel!]!
+}
+
+"""
+用户相关酒店
+"""
+type MemberHotel {
+  "相关id"
+  id: Int!
+  "酒店信息"
+  hotel: Hotel!
+  "创建时间"
+  createdTime: Float!
+}
+
+"""
+酒店列表
+"""
+type HotelList {
+  "总数"
+  total: Int!
+  "酒店列表"
+  hotels: [Hotel!]!
+}
+
+"""
+酒店首页信息
+"""
+type Hotel {
+  "酒店id"
+  id: Int!
+  "酒店信息"
+  info: HotelInfo!
+  "酒店星级"
+  star: HotelStar!
+  "名字"
+  name: String!
+  "子名字"
+  subName: String!
+  "省份"
+  province: String!
+  "城市"
+  city: String!
+  "地区"
+  district: String!
+  "街道"
+  street: String!
+  "详细地址"
+  address: String!
+  "经度"
+  longitude: Float!
+  "纬度"
+  latitude: Float!
+  "介绍"
+  introduction: String!
+  "封面图片"
+  coverUrl: String!
+  "是否有智能锁"
+  hasSmartLock: Boolean!
+  "距离"
+  distance: Int!
+  "最低价格"
+  minPrice: Int!
+  "订单数"
+  orderCount: Int!
+  "评论数"
+  commentCount: Int!
+  "标签"
+  labels: [HotelLabel!]!
+}
+
+"""
+酒店详情
+"""
+type HotelDetail {
+  "酒店id"
+  id: Int!
+  "酒店信息"
+  info: HotelInfo!
+  "星级"
+  star: HotelStar!
+  "房型"
+  roomTypes: [RoomType!]!
+  "图片集"
+  images: [HotelImage!]!
+  "电话"
+  landLines: [HotelLandLine!]!
+  "手机号"
+  phones: [HotelPhone!]!
+  "名字"
+  name: String!
+  "子名字"
+  subName: String!
+  "省份"
+  province: String!
+  "城市"
+  city: String!
+  "地区"
+  district: String!
+  "街道"
+  street: String!
+  "详细地址"
+  address: String!
+  "经度"
+  longitude: Float!
+  "纬度"
+  latitude: Float!
+  "介绍"
+  introduction: String!
+  "是否有智能锁"
+  hasSmartLock: Boolean!
+  "最后装修时间"
+  renovationTime: Float!
+  "距离"
+  distance: Int!
+  "最低价格"
+  minPrice: Int!
+  "订单数"
+  orderCount: Int!
+  "评论数"
+  commentCount: Int!
+  "好评数"
+  highRateCommentCount: Int!
+  "优惠券"
+  coupons: [Coupon!]!
+}
+
+"""
+酒店房型信息
+"""
+type HotelRoomType {
+  "酒店id"
+  id: Int!
+  "房型"
+  roomTypes: [RoomType!]!
+}

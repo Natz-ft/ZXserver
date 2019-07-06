@@ -1,0 +1,117 @@
+"""
+会员收藏或浏览记录
+"""
+type MemberCollectionView {
+  "酒店id"
+  hotelId: Int!
+  "收藏或浏览时间"
+  createdTime: Float!
+}
+
+"""
+会员等级
+"""
+type MemberLevel {
+  "会员等级id"
+  id: Int!
+  "名称"
+  name: String!
+  "图标"
+  icon: String!
+  "折扣"
+  discount: Int!
+  "积分倍数"
+  pointsMultiple: Int!
+  "描述"
+  description: String!
+}
+
+"""
+入住人
+"""
+type CheckInMan {
+  "入住人id"
+  id: Int!
+  "是否本人"
+  isSelf: Boolean!
+  "姓名"
+  name: String!
+  "身份证号"
+  idCard: String
+  "性别"
+  gender: Int
+  "状态"
+  status: Int!
+  "创建时间"
+  createdTime: Float!
+  "身份证加密"
+  tag: String!
+}
+
+"""
+会员优惠券
+"""
+type MemberCoupon {
+  "会员优惠券id"
+  id: Int!
+  "优惠券"
+  coupon: Coupon!
+  "状态"
+  status: Int!
+  "使用时间"
+  usedTime: Float
+  "领取时间"
+  createdTime: Float!
+}
+
+"""
+会员信息
+"""
+type Member {
+  "会员id"
+  id: Int!
+  "会员openId"
+  openId: String!
+  "等级"
+  level: MemberLevel!
+  "昵称"
+  nickname: String!
+  "头像"
+  avatar: String!
+  "手机号"
+  phone: String
+  "是否读取过条约"
+  isRead: Boolean!
+  "状态"
+  status: Int!
+  "成长值"
+  growth: Int!
+  "积分"
+  points: Int!
+  "创建时间"
+  createdTime: Float!
+  "入住人"
+  checkInMen: [CheckInMan!]!
+  "优惠券（MemberCoupon）"
+  coupons: [MemberCoupon!]!
+  "待处理订单"
+  onProcessingOrders: [OnProcessingOrder!]!
+  "收藏酒店数组"
+  collections: [MemberCollectionView!]!
+  "浏览酒店数组"
+  views: [MemberCollectionView!]!
+}
+
+"""
+会员公开信息
+"""
+type PublicMember {
+  "id"
+  id: Int!
+  "等级"
+  level: MemberLevel!
+  "昵称"
+  nickname: String!
+  "头像"
+  avatar: String!
+}

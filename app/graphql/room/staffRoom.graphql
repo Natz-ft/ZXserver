@@ -1,0 +1,243 @@
+"""
+每月价格
+"""
+type MonthPrice {
+  "月份"
+  month: Int!
+  "价格"
+  price: Int!
+}
+
+"""
+每月价格输入类
+"""
+input MonthPriceInput {
+  "月份"
+  month: Int!
+  "价格"
+  price: Int!
+}
+
+"""
+员工酒店房型
+"""
+interface StaffRoomType {
+  "房型id"
+  id: Int!
+  "名称"
+  name: String!
+  "容量"
+  capacity: Int!
+  "封面"
+  cover: String!
+  "介绍"
+  introduction: String!
+  "审核状态"
+  auditStatus: Int!
+  "状态"
+  status: Int!
+}
+
+"""
+后台酒店房型信息
+"""
+type AdminRoomType implements StaffRoomType {
+  "房型id"
+  id: Int!
+  "名称"
+  name: String!
+  "容量"
+  capacity: Int!
+  "封面"
+  cover: String!
+  "介绍"
+  introduction: String!
+  "审核状态"
+  auditStatus: Int!
+  "状态"
+  status: Int!
+  "房间数"
+  roomCount: Int!
+  "是否可为钟点房"
+  hourlyRoom: Int!
+  "钟点房价格"
+  hourlyPrice: Int!
+  "钟点房超出半小时价格"
+  hourlyOutOfPrice: Int!
+  "工作日房价"
+  workPrice: [MonthPrice!]!
+  "周末房价"
+  weekendPrice: [MonthPrice!]!
+  "特价"
+  specialTime: [SpecialPrice!]!
+  "标签"
+  tags: [String!]!
+  "是否独立卫生间"
+  toilet: Int!
+  "是否洗漱用品"
+  toiletries: Int!
+  "是否淋浴"
+  shower: Int!
+  "是否24小时热水"
+  hotWater: Int!
+  "是否吹风机"
+  blower: Int!
+  "上网方式"
+  internet: [Int!]!
+  "是否空气净化器"
+  airCleaner: Int!
+  "图片集"
+  pictures: [String!]!
+}
+
+"""
+客房酒店房型
+"""
+type SweeperRoomType implements StaffRoomType {
+  "房型id"
+  id: Int!
+  "名称"
+  name: String!
+  "容量"
+  capacity: Int!
+  "封面"
+  cover: String!
+  "介绍"
+  introduction: String!
+  "审核状态"
+  auditStatus: Int!
+  "状态"
+  status: Int!
+}
+
+"""
+房间状态
+"""
+type RoomStatus {
+  "房间状态id"
+  id: Int!
+  "标识码"
+  code: String!
+  "状态"
+  status: String!
+  "描述"
+  description: String!
+}
+
+"""
+员工酒店房间
+"""
+interface StaffRoom {
+  "房间id"
+  id: Int!
+  "房型"
+  roomType: StaffRoomType!
+  "状态"
+  status: RoomStatus!
+  "建筑"
+  building: String!
+  "楼层"
+  floor: Int!
+  "门牌"
+  door: String!
+  "是否可为钟点房"
+  isHourly: Boolean!
+}
+
+"""
+后台酒店房间
+"""
+type AdminRoom implements StaffRoom {
+  "房间id"
+  id: Int!
+  "房型"
+  roomType: StaffRoomType!
+  "状态"
+  status: RoomStatus!
+  "建筑"
+  building: String!
+  "楼层"
+  floor: Int!
+  "门牌"
+  door: String!
+  "智能锁ip"
+  lockIP: String
+  "是否可为钟点房"
+  isHourly: Boolean!
+}
+
+"""
+客房酒店房间
+"""
+type SweeperRoom implements StaffRoom {
+  "房间id"
+  id: Int!
+  "房型"
+  roomType: StaffRoomType!
+  "状态"
+  status: RoomStatus!
+  "建筑"
+  building: String!
+  "楼层"
+  floor: Int!
+  "门牌"
+  door: String!
+  "是否可一键开锁"
+  isLockIP: Boolean!
+  "是否可为钟点房"
+  isHourly: Boolean!
+}
+
+"""
+员工酒店房间基础信息
+"""
+interface StaffRoomBase {
+  "房间id"
+  id: Int!
+  "建筑"
+  building: String!
+  "楼层"
+  floor: Int!
+  "门牌"
+  door: String!
+}
+
+"""
+后台酒店房间基础信息
+"""
+type AdminRoomBase implements StaffRoomBase {
+  "房间id"
+  id: Int!
+  "房型"
+  roomType: AdminRoomType!
+  "房间状态"
+  roomStatus: Int!
+  "建筑"
+  building: String!
+  "楼层"
+  floor: Int!
+  "门牌"
+  door: String!
+  "智能锁ip"
+  lockIP: String
+  "是否无人房"
+  isNoMan: Int!
+  "是否可为钟点房"
+  isHourly: Int!
+}
+
+"""
+客房酒店房间基础信息
+"""
+type SweeperRoomBase implements StaffRoomBase {
+  "房间id"
+  id: Int!
+  "建筑"
+  building: String!
+  "楼层"
+  floor: Int!
+  "门牌"
+  door: String!
+  "是否可为钟点房"
+  isHourly: Boolean!
+}

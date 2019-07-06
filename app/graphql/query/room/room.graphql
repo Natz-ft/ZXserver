@@ -1,0 +1,20 @@
+type Query {
+  """
+  获取时间段内某房型空闲房间=>空闲房间数组（会员）
+  """
+  freeRooms (
+    "房型id"
+    roomTypeId: Int!
+    "开始时间"
+    startTime: Float!
+    "结束时间"
+    endTime: Float!
+  ): [Int!]!
+  """
+  获取拥有房间=>拥有房间数组
+  """
+  ownRooms (
+    "订单id"
+    orderId: Int!
+  ): [OwnRoom!]!
+}

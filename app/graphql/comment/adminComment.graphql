@@ -1,0 +1,49 @@
+"""
+评论列表
+"""
+type AdminCommentList {
+  "总数"
+  total: Int!
+  "评论列表"
+  comments: [AdminComment!]!
+}
+
+"""
+评论
+"""
+type AdminComment {
+  "评论id"
+  id: Int!
+  "订单id"
+  orderId: Int!
+  "评分"
+  rate: Int!
+  "评价"
+  content: String!
+  "浏览次数"
+  viewCount: Int!
+  "评论时间"
+  createdTime: Float!
+  "会员"
+  member: PublicMember!
+  "回复"
+  reply: AdminReply
+}
+
+"""
+评论回复
+"""
+type AdminReply {
+  "回复id"
+  id: Int!
+  "评论id"
+  commentId: Int!
+  "员工id"
+  staff: Staff!
+  "回复内容"
+  content: String!
+  "最后修改时间"
+  updatedTime: Float!
+  "回复时间"
+  createdTime: Float!
+}

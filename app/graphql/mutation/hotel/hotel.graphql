@@ -1,0 +1,11 @@
+type Mutation {
+  """
+  浏览酒店=>浏览时间戳（会员，游客）
+  """
+  viewHotel (
+    "酒店id"
+    id: Int!
+    "会员id（为空为游客）"
+    memberId: Int
+  ): Float!
+}

@@ -1,0 +1,39 @@
+type Mutation {
+  """
+  申请入住=>成功与否（会员）
+  """
+  requestCheckIn (
+    "订单id"
+    orderId: Int!
+    "发起会员id"
+    originMemberId: Int!
+    "目标会员id"
+    targetMemberId: Int!
+    "姓名"
+    name: String!
+    "身份证号"
+    idCard: String!
+  ): Boolean!
+  """
+  申请权限=>成功与否（会员）
+  """
+  requestAuthority (
+     "订单房间id"
+     orderRoomId: Int!
+     "发起会员id"
+     originMemberId: Int!
+     "目标会员id"
+     targetMemberId: Int!
+  ): Boolean!
+  """
+  确认分享权限=>成功与否（会员）
+  """
+  confirmAuthority (
+    "订单房间id"
+    orderRoomId: Int!
+    "发起会员id"
+    originMemberId: Int!
+    "目标会员id"
+    targetMemberId: Int!
+  ): Boolean!
+}

@@ -1,0 +1,13 @@
+type Mutation {
+  """
+  pc登录=>登录信息（酒店员工，游客）
+  """
+  webLogin (
+    "用户名"
+    username: String!
+    "密码"
+    password: String!
+    "来源"
+    source: Int!
+  ): Staff!
+}

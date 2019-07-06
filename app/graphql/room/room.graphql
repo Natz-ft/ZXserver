@@ -1,0 +1,185 @@
+"""
+房间入住人
+"""
+input CheckInMenRoom {
+  "房间id"
+  roomId: Int!
+  "入住人id数组"
+  checkInMen: [Int!]!
+}
+
+"""
+续房房间入住人
+"""
+input StayCheckInMenRoom {
+  "房间id"
+  roomId: Int!
+  "原始OrderRoom id"
+  originOrderRoomId: Int!
+  "入住人id数组"
+  checkInMen: [Int!]!
+}
+
+"""
+订单房间入住人
+"""
+type RoomCheckInMan {
+  "id"
+  id: Int!
+  "订单房间id"
+  orderRoomId: Int!
+  "入住人"
+  checkInMan: CheckInMan!
+  "角色"
+  role: Int!
+}
+
+"""
+拥有房间
+"""
+type OwnRoom {
+  "房间信息"
+  room: PublicRoom!
+  "入住人数组"
+  roomCheckInMen: [RoomCheckInMan!]!
+}
+
+"""
+房型标签
+"""
+type RoomTypeLabel {
+  "房型标签id"
+  id: Int!
+  "描述"
+  description: String!
+}
+
+"""
+特价
+"""
+type SpecialPrice {
+  "特价id"
+  id: Int!
+  "开始时间"
+  startTime: Float!
+  "结束时间"
+  endTime: Float!
+  "价格"
+  price: Int!
+  "描述"
+  description: String!
+}
+
+"""
+特价输入类
+"""
+input SpecialPriceInput {
+  "开始时间"
+  startTime: Float!
+  "结束时间"
+  endTime: Float!
+  "价格"
+  price: Int!
+  "描述"
+  description: String!
+}
+
+"""
+房型
+"""
+type RoomType {
+  "房型id"
+  id: Int!
+  "标签"
+  labels: [RoomTypeLabel!]!
+  "价格"
+  prices: [Int!]!
+  "特价"
+  specialPrices: [SpecialPrice!]!
+  "名称"
+  name: String!
+  "人数容量"
+  capacity: Int!
+  "介绍"
+  introduction: String!
+  "钟点房价格"
+  hourlyPrice: Int!
+  "超出时间每半小时价格"
+  hourlyOutOfPrice: Int!
+  "当前房间余量（仅酒店查询存在）"
+  currentCount: Int
+  "封面"
+  cover: String!
+}
+
+"""
+房型公开信息
+"""
+type PublicRoomType {
+  "id"
+  id: Int!
+  "名称"
+  name: String!
+  "人数容量"
+  capacity: Int!
+  "封面"
+  cover: String!
+  "简介"
+  introduction: String!
+}
+
+"""
+房间公开信息
+"""
+type PublicRoom {
+  "id"
+  id: Int!
+  "房型"
+  roomType: PublicRoomType!
+  "建筑"
+  building: String!
+  "楼层"
+  floor: Int!
+  "房间号"
+  door: String!
+}
+
+"""
+订单房间
+"""
+type OrderRoom {
+  "id"
+  id: Int!
+  "订单id"
+  orderId: Int!
+  "房间信息"
+  room: PublicRoom!
+  "状态"
+  status: Int!
+  "是否确认消费"
+  isConsumed: Boolean!
+  "退房时间"
+  checkoutTime: Float
+  "入住人"
+  roomCheckInMen: [RoomCheckInMan!]!
+  "消费列表"
+  consumptions: [Consumption!]!
+}
+
+"""
+打扫订单房间
+"""
+type SweepOrderRoom {
+  "订单房间id"
+  id: Int!
+  "开始时间"
+  startTime: Float!
+  "结束时间"
+  endTime: Float!
+  "是否已确定消费"
+  isConsumed: Boolean!
+  "消费记录"
+  consumptions: [Consumption!]!
+  "酒店消费品列表"
+  merchandises: [Merchandise!]!
+}

@@ -1,0 +1,9 @@
+type Query {
+  """
+  获取酒店优惠券数组=>优惠券数组（酒店员工）
+  """
+  hotelCoupons (
+    "酒店id"
+    hotelId: Int!
+  ): [Coupon!]!
+}

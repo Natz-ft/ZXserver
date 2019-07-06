@@ -1,0 +1,30 @@
+type Mutation {
+  """
+  会员评论=>评论id（会员）
+  """
+  comment (
+    "用户id"
+    memberId: Int!
+    "订单id"
+    orderId: Int!
+    "服务评分"
+    serviceRate: Int!
+    "卫生评分"
+    hygieneRate: Int!
+    "位置评分"
+    positionRate: Int!
+    "设备评分"
+    deviceRate: Int!
+    "评价内容"
+    content: String!
+  ): Int!
+  """
+  酒店回复=>回复id（酒店员工（管理员，后台））
+  """
+  reply (
+    "评论id"
+    commentId: Int!
+    "内容"
+    content: String!
+  ): Int!
+}

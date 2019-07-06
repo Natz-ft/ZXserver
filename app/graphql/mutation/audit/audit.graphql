@@ -1,0 +1,13 @@
+type Mutation {
+  """
+  审核（系统员工）
+  """
+  audit (
+    "id"
+    id: Int!
+    "状态"
+    status: Int!
+    "审核建议"
+    suggestion: String!
+  ): Boolean!
+}

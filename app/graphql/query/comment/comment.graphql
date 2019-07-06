@@ -1,0 +1,60 @@
+type Query {
+  """
+  单一评论查询=>评论详情（全部）
+  """
+  comment (
+    "评论id"
+    id: Int!
+  ): Comment!
+  """
+  通过订单获取评论=>评论详情（会员）
+  """
+  commentByOrder (
+    "订单id"
+    orderId: Int!
+  ): Comment
+  """
+  获取用户评论列表=>评论列表（会员本人）
+  """
+  memberComments (
+    "会员id"
+    memberId: Int!
+    "页码"
+    page: Int!
+    "单页个数"
+    size: Int!
+  ): CommentList!
+  """
+  获取酒店评论数=>酒店评论数（全部）
+  """
+  hotelCommentCount (
+    "酒店id"
+    hotelId: Int!
+  ): CommentCount!
+  """
+  获取酒店评论列表=>评论列表（会员，游客）
+  """
+  hotelComments (
+    "酒店id"
+    hotelId: Int!
+    "页码"
+    page: Int!
+    "单页个数"
+    size: Int!
+    "评论类型"
+    type: Int!
+  ): CommentList!
+  """
+  后台获取酒店评论列表=>评论列表（酒店员工）
+  """
+  hotelAdminComments (
+    "酒店id"
+    hotelId: Int!
+    "页码"
+    page: Int!
+    "单页个数"
+    size: Int!
+    "评论类型"
+    type: Int!
+  ): AdminCommentList!
+}

@@ -1,0 +1,198 @@
+type Mutation {
+  """
+  开锁=>是否成功（酒店员工）
+  """
+  openLock (
+    "房间id"
+    id: Int!
+  ): Boolean!
+  """
+  更改房间房态=>成功与否（酒店员工）
+  """
+  changeRoomStatus (
+    "房间id"
+    id: Int!
+    "状态id"
+    statusId: Int!
+  ): Boolean!
+  """
+  更改房型房态=>成功与否（酒店员工）
+  """
+  changeRoomTypeStatus (
+    "房型id"
+    roomTypeId: Int!
+    "状态"
+    status: Int!
+  ): Boolean!
+  """
+  更换房间=>成功与否（酒店员工）
+  """
+  changeRoom (
+    "旧房间id"
+    oldId: Int!
+    "新房间id"
+    newId: Int!
+  ): Boolean!
+  """
+  新增房型=>房型信息（酒店员工）
+  """
+  addRoomType (
+    "酒店id"
+    hotelId: Int!
+    "名称"
+    name: String!
+    "容量"
+    capacity: Int!
+    "介绍"
+    introduction: String!
+    "状态"
+    status: Int!
+    "是否可为钟点房"
+    hourlyRoom: Int!
+    "钟点房价格"
+    hourlyPrice: Int!
+    "钟点房超出半小时价格"
+    hourlyOutOfPrice: Int!
+    "工作日房价"
+    workPrice: [MonthPriceInput!]!
+    "周末房价"
+    weekendPrice: [MonthPriceInput!]!
+    "特价"
+    specialTime: [SpecialPriceInput!]!
+    "标签"
+    tags: [String!]!
+    "是否独立卫生间"
+    toilet: Int!
+    "是否洗漱用品"
+    toiletries: Int!
+    "是否淋浴"
+    shower: Int!
+    "是否24小时热水"
+    hotWater: Int!
+    "是否吹风机"
+    blower: Int!
+    "上网方式"
+    internet: [Int!]!
+    "是否空气净化器"
+    airCleaner: Int!
+  ): StaffRoomType!
+  """
+  删除房型=>是否删除成功（酒店员工）
+  """
+  removeRoomType (
+    "房型id"
+    roomTypeId: Int!
+  ): Boolean!
+  """
+  提交房型信息审核=>是否提交成功（酒店员工）
+  """
+  submitRoomType (
+    "id"
+    id: Int!
+    "名称"
+    name: String!
+    "介绍"
+    introduction: String!
+    "钟点房价格"
+    hourlyPrice: Int!
+    "钟点房超出半小时价格"
+    hourlyOutOfPrice: Int!
+    "工作日房价"
+    workPrice: [MonthPriceInput!]!
+    "周末房价"
+    weekendPrice: [MonthPriceInput!]!
+    "特价"
+    specialTime: [SpecialPriceInput!]!
+    "标签"
+    tags: [String!]!
+    "封面图片"
+    cover: String!
+    "图片集"
+    pictures: [String!]!
+  ): Boolean!
+  """
+  房型信息更新=>是否更新成功（酒店员工）
+  """
+  updateRoomType (
+    "id"
+    id: Int!
+    "状态"
+    status: Int!
+    "是否可为钟点房"
+    hourlyRoom: Int!
+    "是否独立卫生间"
+    toilet: Int!
+    "是否洗漱用品"
+    toiletries: Int!
+    "是否淋浴"
+    shower: Int!
+    "是否24小时热水"
+    hotWater: Int!
+    "是否吹风机"
+    blower: Int!
+    "上网方式"
+    internet: [Int!]!
+    "是否空气净化器"
+    airCleaner: Int!
+  ): Boolean!
+  """
+  新增房间=>房间id（酒店员工）
+  """
+  addRoom (
+    "房型id"
+    roomTypeId: Int!
+    "建筑"
+    building: String!
+    "楼层"
+    floor: Int!
+    "房间号"
+    door: String!
+    "智能门锁ip"
+    lockIP: String!
+    "是否无人房"
+    isNoMan: Int!
+    "是否可为钟点房"
+    isHourly: Int!
+  ): Int!
+  """
+  更新房间=>房间信息（酒店员工）
+  """
+  updateRoom (
+    "房间id"
+    id: Int!
+    "房型id"
+    roomTypeId: Int!
+    "房间状态"
+    status: Int!
+    "建筑"
+    building: String!
+    "楼层"
+    floor: Int!
+    "房间号"
+    door: String!
+    "智能门锁ip"
+    lockIP: String!
+    "是否无人房"
+    isNoMan: Int!
+    "是否可为钟点房"
+    isHourly: Int!
+  ): Int!
+  """
+  删除房间=>是否删除成功（酒店员工）
+  """
+  removeRoom (
+    "房间id"
+    id: Int!
+  ): Boolean!
+  """
+  确定消费品=>成功与否（酒店员工）
+  """
+  confirmConsume (
+    "订单房间id"
+    orderRoomId: Int!
+    "消费品数组"
+    merchandises: [Int!]!
+    "数量数组"
+    counts: [Int!]!
+  ): Boolean!
+}

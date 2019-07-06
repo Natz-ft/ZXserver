@@ -1,0 +1,40 @@
+type Query {
+  """
+  查询订单=>订单详情（会员本人）
+  """
+  order (
+    "订单id"
+    id: Int!
+  ): Order
+  """
+  查询子订单列表=>子订单列表（会员）
+  """
+  orderChildren (
+    "id"
+    id: Int!
+  ): [Order!]!
+  """
+  获取订单列表=>订单列表（测试）
+  """
+  orders: [Order!]!
+  """
+  查询订单状态=>订单状态
+  """
+  orderStatus (
+    "id"
+    id: Int!
+  ): Int!
+  """
+  酒店订单
+  """
+  hotelOrders (
+    "酒店id"
+    hotelId: Int!
+    "订单状态"
+    status: Int!
+    "页码"
+    page: Int!
+    "单页个数"
+    size: Int!
+  ): OrderList!
+}

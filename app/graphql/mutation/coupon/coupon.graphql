@@ -1,0 +1,11 @@
+type Mutation {
+  """
+  领取优惠券=>优惠券库存（会员）
+  """
+  collectCoupon (
+    "优惠券id"
+    id: Int!
+    "会员id"
+    memberId: Int!
+  ): CouponStock!
+}
